@@ -1,0 +1,65 @@
+<?php
+$translate = $this->plugin('translate');
+$bgSearch = $this->themeSettingAssetUrl('banner_narrow');
+$bgSearchHome = $this->themeSettingAssetUrl('banner_large');
+$separator = $this->themeSettingAssetUrl('separator');
+$userBar = $this->userBar();
+
+$this->headMeta()->setCharset('utf-8');
+$this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
+$this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' | ');
+
+$this->headLink()->appendStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
+$this->headLink()->prependStylesheet($this->assetUrl('lib/splide/css/splide.min.css' ));
+$this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
+
+$this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
+$this->headScript()->prependFile($this->assetUrl('lib/splide/js/splide.min.js' ));
+$this->headScript()->appendFile($this->assetUrl('js/theme.js'));
+
+$this->jsTranslate();
+$this->trigger('view.layout');
+?>
+<?php echo $this->doctype(); ?>
+<?php echo $this->htmlElement('html')->setAttribute('lang', $this->lang()); ?>
+	<head>
+		<?php echo $this->headMeta(); ?>
+		<?php echo $this->headTitle(); ?>
+		<?php echo $this->headLink(); ?>
+		<?php echo $this->headStyle(); ?>
+		<?php echo $this->headScript(); ?>
+
+
+		<style type="text/css" media="screen">
+			:root {
+				<?php echo ($bgSearchHome) ? '--img-bg-search-home: url('.$bgSearchHome.');' : '' ; ?>
+				<?php echo ($bgSearch) ? '--img-bg-search: url('.$bgSearch.');' : '' ; ?>
+				<?php echo ($separator) ? '--img-separator: url('.$separator.');' : '' ; ?>
+			}
+		</style>
+	</head>
+
+	<?php echo $this->htmlElement('body')->appendAttribute('class', 'minimal'); ?>
+		<?php echo $userBar; ?>
+
+		<?php echo $this->partial('common/theme/header', ['userBar' => $userBar, 'site' => $site]); ?>
+
+		<div id="content" role="main">
+			<?php echo $this->messages(); ?>
+			<?php echo $this->content; ?>
+		</div>
+		
+		<?php
+			// Show partners section on all pages
+			$partners_show = $this->themeSetting( 'partners_show');
+			$partners_show_allpages = $this->themeSetting( 'partners_show_allpages');
+
+			if( ($partners_show == 1) && ($partners_show_allpages == 1) ):
+				echo $this->partial('common/theme/partners', ['site' => $site, 'translate' => $translate]);
+			endif;
+		?>
+		<?php echo $this->partial('common/theme/footer', ['site' => $site]); ?>
+		<?php echo $this->partial('common/theme/back-to-top', ['translate' => $translate]); ?>
+	</body>
+</html>

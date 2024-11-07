@@ -1,0 +1,50 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$escAttr = $this->plugin('escapeHtmlAttr');
+
+$siteTitle = $site->title();
+
+?>
+
+
+<?php 
+
+	$themes_title = $this->themeSetting('home_themes_title');
+	$themes_text = $this->themeSetting('home_themes_text');
+?>	
+<section class="home-themes">
+	<div class="wrap wrap--md">
+
+		<h2 class="home-themes__title"><?php if( $themes_title ): echo $themes_title; else: echo $translate('Discover other items'); endif; ?></h2>
+
+		<?php if( $themes_text ): echo '<div class="home-themes__text wrap wrap--sm">'.$themes_text.'</div>';  endif; ?>
+
+		<ul class="home-themes__list">
+			<?php
+			for($numTheme=1; $numTheme<=10; $numTheme++):
+			
+				$theme_thumbnail = $this->themeSetting('theme_image'.$numTheme);
+				$theme_title = $this->themeSetting('theme_title'.$numTheme);
+				$theme_url = $this->themeSetting('theme_url'.$numTheme);
+
+				if ($theme_thumbnail && $theme_title):
+
+					if($theme_url):
+						$theme = '<a href="'.$theme_url.'" target="_blank" title="'.$theme_title.' - '.$translate('Open new tab').'"><img src="'.$this->themeSettingAssetUrl('theme_image'.$numTheme).'" alt="'.$theme_title.'"><h3>'.$theme_title.'</h3></a>';
+					else:
+						$theme = '<img src="'.$this->themeSettingAssetUrl('theme_image'.$numTheme).'" alt="'.$theme_title.'">';
+					endif;
+				?>
+				<li class="home-themes__item">
+					<?php echo $theme; ?>
+				</li>
+
+				<?php 	
+				endif;
+			endfor; 
+			?>
+		</ul>
+
+	</div>
+</section>

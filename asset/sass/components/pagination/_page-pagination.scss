@@ -1,0 +1,25 @@
+.site-page-pagination {
+	padding-top: $gutter--xl;
+	@extend .wrap;
+	@extend .wrap--lg;
+
+	.wrap {
+		display: flex;
+		justify-content: space-between;
+		padding: $gutter--xl $gutter;
+
+		@include breakpoint(lg) {
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+	}		
+
+	.page__next:only-child {
+		margin-left: auto;
+	}
+
+	a {
+		@extend .button;
+	}
+} 

@@ -1,0 +1,21 @@
+.page-layout-normal .block.block-pageTitle {
+	width: calc(100% + 2 * #{$gutter});
+	margin-left: -$gutter;
+	margin-right: -$gutter;
+
+	@include breakpoint(sm) {
+		@include alignfull;
+	}
+}
+.block-pageTitle {
+	margin-bottom: $gutter--xl;
+	padding-bottom: $gutter--xl;
+
+	h1,
+	h2 {
+		max-width: $width--lg;
+		@include margin-auto;
+		margin-bottom: 0;
+		text-align: center;
+	}
+}

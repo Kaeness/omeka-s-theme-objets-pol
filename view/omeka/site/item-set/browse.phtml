@@ -1,0 +1,51 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$thumbnail = $this->plugin('thumbnail');
+
+$filterLocale = (bool) $this->siteSetting('filter_locale_values');
+$lang = $this->lang();
+$valueLang = $filterLocale ? [$lang, ''] : null;
+
+$this->htmlElement('body')->appendAttribute('class', 'item-set item-sets resource browse');
+?>
+
+
+<div class="breadcrumbs wrap wrap--lg">
+	<a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $translate('All item sets'); ?></span>
+</div>
+
+<div class="blocks">
+
+	<div class="wrap wrap--md">
+		<?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+
+		<?php echo $this->searchFilters(); ?>
+
+		<div class="browse-controls">
+			<div class="pagination__container"><?php echo $this->pagination(); ?></div>
+			<?php echo $this->hyperlink($translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'button button--small']); ?>
+		</div>
+
+		<?php $this->trigger('view.browse.before'); ?>
+		<ul class="collection__items">
+		<?php
+		$headingTerm = $this->siteSetting('browse_heading_property_term');
+		$bodyTerm = $this->siteSetting('browse_body_property_term');
+		foreach ($itemSets as $itemSet):
+			$heading = $headingTerm ? $itemSet->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $itemSet->displayTitle(null, $valueLang);
+		?>
+			<li class="collection__item">
+				<?php
+				$linkContent = sprintf('<div class="collection__thumbnail">%s</div><h2 class="collection__title">%s</h2>',
+					$thumbnail($itemSet, 'medium'),
+					$escape($heading));
+				echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']);
+				?>
+			</li>
+		<?php endforeach; ?>
+		</ul>
+	</div>
+</div>
+<?php $this->trigger('view.browse.after'); ?>
+<div class="pagination--bottom"><div class="pagination__container"><?php echo $this->pagination(); ?></div></div>

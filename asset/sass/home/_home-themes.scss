@@ -1,0 +1,19 @@
+.home-themes {
+	
+	ul {
+		display: grid;
+		grid-rows-gap: $gutter--md;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		
+		@include breakpoint(xs) {
+			grid-template-columns: 1fr 1fr;
+			grid-columns-gap: $gutter--md;
+		}
+		@include breakpoint(sm) {
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-columns-gap: $gutter--md;
+		}
+	}
+}

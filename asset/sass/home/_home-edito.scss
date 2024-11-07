@@ -1,0 +1,18 @@
+.edition {
+
+	&__content {
+		text-align: center;
+		
+	}
+	&__title {
+		margin-bottom: $gutter;
+	}
+	&__baseline {
+		margin-bottom: $gutter--xs;
+		text-align: center;
+		font-weight: $semi-bold;
+	}
+	&__button {
+		margin-top: $gutter--sm;
+	}
+}

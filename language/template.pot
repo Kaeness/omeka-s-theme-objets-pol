@@ -1,0 +1,212 @@
+# Theme translation
+# Copyright (C) 2023
+# This file is distributed under the same license as the Ioka package.
+# Kaeness <contact@kaeness.fr>, 2024.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kaeness Starter Theme Omeka S 4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-16 10:41+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kaeness <contact@kaeness.fr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+
+
+#: ../view/layout/layout.phtml:159
+msgid "Back to top"
+msgstr ""
+
+
+
+
+#: /../view/common/search-form.phtml:8
+msgid "Simple Search"
+msgstr ""
+
+#: /../view/common/advanced-search/item-sets.phtml:15
+msgid "Search by item set "
+msgstr ""
+
+#: /../view/common/advanced-search/item-sets.phtml:39
+msgid "Add item set"
+msgstr ""
+
+#: /../view/common/advanced-search/resource-class.phtml:15
+msgid "Search by document type"
+msgstr ""
+
+#: /../view/common/advanced-search/resource-class.phtml:36
+msgid "Add class"
+msgstr ""
+
+#: /../view/common/advanced-search/resource-class.phtml:36
+msgid "Searches for items that are any of these classes."
+msgstr ""
+
+#: ../view/common/pagination.phtml:11
+msgid "<strong>%1$s–%2$s</strong> of %3$s"
+msgstr ""
+
+#: ../view/common/pagination.phtml:16
+msgid "of %s"
+msgstr ""
+
+#: ../view/common/pagination.phtml:41
+msgid "Results %1$s–%2$s of %3$s"
+msgstr ""
+
+#: ../view/common/pagination.phtml:30
+msgid "Results"
+msgstr ""
+
+
+
+#: /../view/omeka/site/page/show.phtml:44
+msgid "News"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:85
+msgid "Read more"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:89
+msgid "Latest briefs submitted"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:126
+msgid "Collections Selection"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:126
+msgid "All the collections"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:133
+msgid "New documents"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:180
+msgid "Go to page"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:278
+msgid "Explore all the collections"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:288
+msgid "Discover other items"
+msgstr ""
+
+#: ../view/omeka/site/page/show.phtml:391
+msgid ": "
+msgstr ""
+
+
+
+#: ../view/omeka/site/item/browse.phtml:29
+msgid "All Item Sets"
+msgstr ""
+
+#: ../view/omeka/site/item/browse.phtml:59
+msgid "Sort"
+msgstr ""
+
+#: ../view/omeka/site/item/browse.phtml:71
+msgid "Sub-collections"
+msgstr ""
+
+#: ../view/omeka/site/item/browse.phtml:88
+msgid "The items"
+msgstr ""
+msgstr ""
+
+#: ../view/omeka/site/item/browse.phtml:96
+msgid "In this collection"
+msgstr ""
+
+
+
+#: ../view/omeka/site/item/show.phtml:48
+msgid "All items sets"
+msgstr ""
+
+#: ../view/omeka/site/item/show.phtml:49
+msgid "Tools"
+msgstr ""
+
+#: ../view/omeka/site/item/show.phtml:86
+msgid "Document download"
+msgstr ""
+
+#: ../view/omeka/site/item/show.phtml:139
+msgid "Download pdf file"
+msgstr ""
+
+#: ../view/omeka/site/item/show.phtml:439
+msgid "Related documents"
+msgstr ""
+
+
+
+#: ../view/search/form/standard.phtml:36
+msgid "Simple search"
+msgstr ""
+
+#: ../view/search/form/standard.phtml:44
+msgid "Search by filters"
+msgstr ""
+
+#: ../view/search/index/search.phtml:89
+msgid "No results matching your search."
+msgstr ""
+
+#: ../view/search/form/standard.phtml:35
+msgid "Open search"
+msgstr ""
+
+#: ../view/search/form/standard.phtml:47
+msgid "Indications: "
+msgstr ""
+
+#: ../view/search/form/standard.phtml:48
+msgid "“Matches pattern” means that results ONLY matche with words entered as text. Allowed to “begin with” and “end with” by adding an asterisk at the beginning and the end of the words."
+msgstr ""
+msgstr ""
+
+#: ../view/search/form/standard.phtml:192
+msgid "Reset Search"
+msgstr ""
+
+#: ../view/search/form/standard-match-group.phtml:63
+msgid "Add filter"
+msgstr ""
+
+#: ../view/search/form/standard-match-group.phtml:63
+msgid "Add filters group"
+msgstr ""
+
+
+
+
+#: ../view/item-sets-tree/site/index/index.phtml:12
+msgid "All Item Sets"
+msgstr ""
+
+
+
+
+# ----
+msgid "No result found"
+msgstr ""
+
+msgid "Add filter group"
+msgstr ""

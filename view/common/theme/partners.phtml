@@ -1,0 +1,58 @@
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$escAttr = $this->plugin('escapeHtmlAttr');
+
+$siteTitle = $site->title();
+
+?>
+
+<?php 
+
+	$partners_title = $this->themeSetting('partners_title');
+	$partners_label = $this->themeSetting('partners_label');
+	$partners_url = $this->themeSetting('partners_url');
+
+	$partnerImage = $this->themeSetting('partnerslist_logo1');
+	$partnerLabel = $this->themeSetting('partnerslist_label1');
+
+	$partners_allpages = $this->themeSetting('partners_show_allpages');
+	$class_allpages = ' partners--onlyhome';
+	if( $partners_allpages == 1 ): $class_allpages = ''; endif;
+
+	if($partnerImage && $partnerLabel):
+	?>
+	<div class="footer-top partners<?php echo $class_allpages; ?>">
+		<div class="wrap wrap--lg">
+			<?php echo ($partners_title) ? '<p class="partners__title">'.$partners_title.'</p>' : ''; ?>
+			<ul class="partners__list">
+				<?php
+				for($numPartner=1; $numPartner<=10; $numPartner++):
+				
+					$partner_image = $this->themeSetting('partnerslist_logo'.$numPartner);
+					$partner_label = $this->themeSetting('partnerslist_label'.$numPartner);
+					$partnerUrl = $this->themeSetting('partnerslist_url'.$numPartner);
+
+					if ($partner_image && $partner_label):
+
+						if($partnerUrl):
+							$partner = '<a href="'.$partnerUrl.'" target="_blank" title="'.$partner_label.' - '.$translate('Open new tab').'"><img src="'.$this->themeSettingAssetUrl('partnerslist_logo'.$numPartner).'" alt="'.$partner_label.'"></a>';
+						else:
+							$partner = '<img src="'.$this->themeSettingAssetUrl('partnerslist_logo'.$numPartner).'" alt="'.$partner_label.'">';
+						endif;
+					?>
+					<li class="partners__item">
+						<?php echo $partner; ?>
+					</li>
+
+					<?php 	
+					endif;
+				endfor; 
+				?>
+			</ul>
+				
+			<?php echo ($partners_label && $partners_url) ? '<p class="partners__button"><a href="'.$partners_url.'" class="button">'.$partners_label.'</a></p>' : ''; ?>
+		</div>
+			
+	</div>
+<?php endif; ?>

@@ -1,0 +1,132 @@
+.faceted-browse-page #container {
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+
+	.page-title {
+		flex-basis: 100%;
+	}
+	.browse-controls {
+		margin-bottom: 0;
+
+		@include breakpoint(lg) {
+			grid-template-columns: 1fr auto;
+		}
+	}
+
+	// FACETS
+	#section-sidebar {
+		width: $one-third;
+		padding: $gutter;
+		background-color: $bg-light;
+
+		@include breakpoint(md) {
+			width: $one-fifth;
+		}
+	}
+	#helper-text-expand-collapse {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 0;
+
+		&::after {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 1.2em;
+			height: 1.2em;
+		}
+	}
+	#helper-text {
+		padding: $gutter--xs;
+	}
+	fieldset {
+		margin: $gutter--sm 0 0;
+	}
+	.select-list-item {
+		margin-bottom: $gutter;
+
+		label {
+			line-height: $line-height--sm;
+
+			&:hover,
+			&:focus {
+				cursor: pointer;				
+
+				span {
+					box-shadow: inset 0 -2px 0 0 $bg-primary;
+				}
+			}
+			&:has(.value.selected) span {
+				box-shadow: inset 0 -1px 0 0 $bg-secondary;
+				font-weight: $semi-bold;
+			}
+
+			span {
+				@include transition;
+			}
+		}
+	}
+
+	// MAIN CONTENT
+	#section-content {
+		width: $two-thirds;
+
+		@include breakpoint(md) {
+			width: $four-fifths;
+		}
+		.tablesaw-bar {
+			display: none; // voir utilisation de cet outil, à développer
+		}
+		table {
+			margin-bottom: $gutter--md;
+		}
+		th {
+			padding: $gutter--xs $gutter;
+			background-color: $bg-light;
+			text-transform: uppercase;
+		}
+		tr {
+			position: relative;
+			@include transition;
+
+			&:nth-of-type(even) {
+				
+				background-color: $bg-light;
+			}
+			&:hover,
+			&:focus-within {
+				box-shadow: inset 0 -2px 0 0 $bg-primary, inset 0 2px 0 0 $bg-primary, inset 2px 0 0 0 $bg-primary, inset -2px 0 0 0 $bg-primary;
+			}
+			td {
+				padding: $gutter;
+				vertical-align: top;
+			}
+		}
+
+		table .resource-link {
+			display: flex;
+			align-items: flex-start;
+			width: 	100%;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+
+			img {
+				max-height: 150px;
+			}
+		}
+
+		.resource-name {
+			font-weight: $semi-bold;
+			color: $color-global;
+		}
+	}
+}

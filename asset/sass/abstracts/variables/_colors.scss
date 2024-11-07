@@ -1,0 +1,67 @@
+/* ------------	COLORS
+----------------------------------------------------------- */
+
+// COLORS LIST
+$black:			#000; 		/* Titres + liens survol + filet simple search */ 
+$dark:			#404040; 	/* Textes courants + filets boutons + fond foncés */
+$grey--1:		#9B9FA4; 	/* BG medium */
+$grey--2:		#D8D8DA; 	/* Border grey on grey bg */
+$grey--3:		#EBEBEB; 	/* BG Images */
+$light:			#F3F3F4; 	/* BG pages */
+$white: 		#FFF;
+
+$primary:		#CB3C07; 	/* Main color */
+$secondary:		#899e9e; 	/* Complementary color - lighter */
+
+// BODY & BG COLORS ATTRIBUTION
+$bg-primary:	$primary; 	/* Main color */
+$bg-secondary:	$secondary; 	/* Complementary color - lighter */
+
+$bg-white:		$white;
+$bg-body:		$bg-white;
+$bg-dark:		$dark;
+$bg-grey:		$grey--1;
+$bg-medium:		$grey--3;
+$bg-light:		$light;
+
+$bg-menu:		$bg-white;
+$bg-socials:	$bg-dark;
+$bg-search:		$grey--3;
+
+// MISC
+$bg-link:		$bg-primary;  // bg behind links on hover / focus state
+$bg-button:		$bg-primary;
+$bg-menu-hover:	$bg-white;
+
+$border--1:			$primary;
+$border--2:			$secondary;
+$border--3:			$grey--2; 
+$border--link:		$secondary;
+$border--button:	$secondary;
+$border--form:		$secondary;
+$outline:			$bg-primary;
+
+$marker:		$bg-primary;
+$marker--2:		$bg-secondary; /* second level markers */
+
+
+// FONT COLORS ATTRIBUTION
+$color-global:		$black;
+$color-headings:	$primary;
+$color-headings--2:	$dark;
+$color-light:		$white;
+
+$color-button:			$color-headings;
+$color-button--hover: 	$color-light;
+
+$color-link:			$color-global;
+$color-link--hover:		$color-light;
+$color-accent:			$primary;
+
+$color-menu:		$color-global;
+$color-lang:		$color-light;
+$color-visited:		$color-headings--2;
+$color-label:		$color-headings--2;
+$color-value:		$color-global;
+$color-placeholder:	$color-headings--2;
+$color-legend:		$color-headings--2;

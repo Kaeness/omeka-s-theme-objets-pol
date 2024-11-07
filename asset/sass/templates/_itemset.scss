@@ -1,0 +1,186 @@
+/* Itemsets list - item-set/browse.phtml
+--------------------------------------------- */
+.item-set.browse {
+
+	.blocks > .wrap {
+		padding: $gutter--md 0;
+
+		@include breakpoint(xs) {
+			padding-top: $gutter--lg;
+			padding-bottom: $gutter--lg;
+		}
+		@include breakpoint(sm) {
+			padding-top: $gutter--xl;
+			padding-bottom: $gutter--xl;
+		}
+	}
+
+	.browse-controls,
+	.pagination--bottom {
+		background-color: $bg-white;
+	} 
+
+	.collection__items {
+		padding: 0;
+		list-style-type: none;
+
+		a {
+			box-shadow: none;
+
+			&:hover,
+			&:focus {
+				box-shadow: none;
+				background-color: transparent;
+				
+				.collection__title {
+					color: $color-light;
+				}
+			}
+		}
+	}
+
+}
+
+/* Itemset - item/browse.phtml
+--------------------------------------------- */
+.item.browse {
+
+	.blocks > .wrap--xl {
+		padding: $gutter--md $gutter;
+		background-color: $bg-white;
+		border-top: 2px solid $bg-secondary;
+
+		@include breakpoint(xs) {
+			padding: $gutter--lg $gutter--sm;
+		}
+		@include breakpoint(sm) {
+			padding: $gutter--xl;
+		}
+		@include breakpoint(lg) {
+			padding-left: $gutter--xxl;
+			padding-right: $gutter--xxl;
+		}
+	}
+}
+
+.itemset {
+
+	&__subcollections {	
+		grid-area: subcollections;
+
+		.simple-accordion {
+
+			&__title {
+				padding: $gutter--md;
+			}
+		}
+		
+		.simple-accordion__heading {
+			border: 1px solid $bg-primary;
+
+			&:hover,
+			&:active,
+			&:focus {			
+				background-color: $bg-primary;
+			}
+		}
+		.simple-accordion__panel {
+			background-color: $bg-light;
+
+			ul {
+				padding: 0;
+			}
+
+			li {
+				position: relative;
+				list-style-type: none;
+				padding: $gutter;
+				border-bottom: 1px solid $bg-body;
+			}
+			a {
+				display: inline-block;
+				padding: 0 $gutter--md;
+
+				&::after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
+
+				&:hover,
+				&:focus {
+					color: $color-accent;
+					box-shadow: inset 0 -3px 0 0 $bg-secondary;
+				}
+			}
+		}
+	}
+}
+
+.itemset {
+
+	&__content {
+		display: grid;
+		grid-template-columns: 175px 1fr;
+		grid-template-rows: auto 1fr;
+		grid-template-areas: 'thumbnail content' 'thumbnail subcollections';
+		grid-row-gap: 0.75 * $gutter;
+		align-items: flex-start;
+		max-width: $width;
+		@include margin-auto;
+		margin-bottom: $gutter--xl;
+
+		@include breakpoint(xs) {
+			grid-template-columns: 275px 1fr;
+		}
+
+		&:not(:has(.itemset__metadata, .itemset__subcollections)) {
+			display: flex;
+			justify-content: center;
+		}
+	}
+	&__thumbnail {
+		grid-area: thumbnail;
+		position: relative;
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		width: 175px;
+		aspect-ratio: 1/1;
+
+		@include breakpoint(xs) {
+			width: 275px;
+		}
+		img {
+			min-height: 100%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+	&__metadata {
+		grid-area: content;
+		padding: $gutter--sm;
+
+		@include breakpoint(xs) {
+			padding: $gutter--md;
+		}
+		
+		dl {
+			display: grid;
+			grid-row-gap: $gutter;
+			margin-bottom: 0;
+		}
+
+		& > .itemset__subcollections {
+
+			& > .accordion__heading > .accordion__trigger {
+				@include box-shadow--md;
+			}
+		}
+	}
+}

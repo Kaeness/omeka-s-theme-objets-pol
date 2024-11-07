@@ -1,0 +1,42 @@
+<?php
+	$edition_title = $this->themeSetting( 'edition_title');
+	$edition_baseline_doc = $this->themeSetting( 'edition_baseline_doc');
+	$edition_baseline_nodoc = $this->themeSetting( 'edition_baseline');
+	$edition_text = $this->themeSetting( 'edition_text');
+	$edition_label = $this->themeSetting( 'edition_button');
+	$edition_url = $this->themeSetting( 'edition_url');
+
+	$edition_baseline = '';
+	$items_number = $this->api()->search('items', [
+					'is_public' => 1,
+					'site_id' => $site->id(),
+					'limit' => 0,
+				])->getTotalResults();
+
+	if( $edition_baseline_doc && $edition_baseline_nodoc ) : 
+		$edition_baseline = $items_number.' '.$edition_baseline_doc; 
+	elseif( $edition_baseline_doc ):
+		$edition_baseline = $items_number.' '.$edition_baseline_doc;
+	elseif( $edition_baseline_nodoc ):
+		$edition_baseline = $edition_baseline_nodoc;
+	endif;
+?>
+<?php if( $edition_title && $edition_text ): ?>
+
+<section class="edition">
+	<div class="wrap wrap--sm">
+		<div class="edition__content">
+			<h2 class="edition__title"><?php echo $edition_title; ?></h2>
+			<?php echo $edition_baseline ? '<p class="edition__baseline">'.$edition_baseline.'</p>' : ''; ?>
+			<div class="edition__text"><?php echo $edition_text; ?></div>
+
+			<?php if( $edition_label && $edition_url ): ?>
+			<div class="edition__button">
+				<a href="<?php echo $edition_url; ?>" class="button button--small"><?php echo $edition_label; ?></a>
+			</div>
+			<?php endif; ?>
+		</div>
+	</div>				
+</section>
+
+<?php endif; ?>
