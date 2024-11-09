@@ -4,22 +4,26 @@
 // COLORS LIST
 $black:			#000; 		/* Titres + liens survol + filet simple search */ 
 $dark:			#404040; 	/* Textes courants + filets boutons + fond foncés */
-$grey--1:		#9B9FA4; 	/* BG medium */
-$grey--2:		#D8D8DA; 	/* Border grey on grey bg */
-$grey--3:		#EBEBEB; 	/* BG Images */
-$light:			#F3F3F4; 	/* BG pages */
+$grey--1:		#EFEBED; 	/* BG listes */
+$grey--2:		#FDF4F0; 	/* Bg listes survol */
+$grey--3:		#F1EAEA; 	/* BG Recherche / formulaires */
+$grey--4:		#E6E1E2; 	/* Border liens */
+$grey--5:		#D8CFD2; 	/* Border liens hover */
+$light:			#F9F9F9; 	/* BG pages */
 $white: 		#FFF;
 
-$primary:		#CB3C07; 	/* Main color */
-$secondary:		#899e9e; 	/* Complementary color - lighter */
+$primary:		#B71E00; 	/* Main color - rouge */
+$secondary:		#F2AE8F; 	/* Complementary color - saumon */
+$tertiary:		#6B4C57; 	/* Complementary color - taupe */
 
 // BODY & BG COLORS ATTRIBUTION
-$bg-primary:	$primary; 	/* Main color */
-$bg-secondary:	$secondary; 	/* Complementary color - lighter */
+$bg-primary:	$primary; 
+$bg-secondary:	$secondary;
+$bg-tertiary:	$tertiary; 	
 
 $bg-white:		$white;
-$bg-body:		$bg-white;
-$bg-dark:		$dark;
+$bg-body:		$light;
+$bg-dark:		$black;
 $bg-grey:		$grey--1;
 $bg-medium:		$grey--3;
 $bg-light:		$light;
@@ -33,22 +37,22 @@ $bg-link:		$bg-primary;  // bg behind links on hover / focus state
 $bg-button:		$bg-primary;
 $bg-menu-hover:	$bg-white;
 
-$border--1:			$primary;
-$border--2:			$secondary;
-$border--3:			$grey--2; 
-$border--link:		$secondary;
-$border--button:	$secondary;
-$border--form:		$secondary;
+$border--1:			$black;
+$border--2:			$bg-primary;
+$border--3:			$grey--5; 
+$border--link:		$grey--4;
+$border--button:	$black;
+$border--form:		$black;
 $outline:			$bg-primary;
 
-$marker:		$bg-primary;
-$marker--2:		$bg-secondary; /* second level markers */
+$marker:		$black;
+$marker--2:		$black; /* second level markers */
 
 
 // FONT COLORS ATTRIBUTION
 $color-global:		$black;
-$color-headings:	$primary;
-$color-headings--2:	$dark;
+$color-headings:	$black;
+$color-headings--2:	$color-headings;
 $color-light:		$white;
 
 $color-button:			$color-headings;
@@ -60,8 +64,8 @@ $color-accent:			$primary;
 
 $color-menu:		$color-global;
 $color-lang:		$color-light;
-$color-visited:		$color-headings--2;
-$color-label:		$color-headings--2;
+$color-visited:		$tertiary;
+$color-label:		$tertiary;
 $color-value:		$color-global;
-$color-placeholder:	$color-headings--2;
-$color-legend:		$color-headings--2;
+$color-placeholder:	$color-global;
+$color-legend:		$color-label;

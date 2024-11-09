@@ -11,6 +11,9 @@ $footer_logo2 = $this->themeSetting('logo_bis');
 $footer_logo2_label = $this->themeSetting('logo_bis_label');
 $footer_logo2_url = $this->themeSetting('logo_bis_url');
 
+$logo = $this->themeSetting('logo');
+$logo_small = $this->themeSetting('logo_small');
+
 $socialNetworks  = array( 'facebook', 'x', 'linkedin', 'instagram', 'youtube', 'vimeo', 'mastodon' );
 $hasSocialNetworks = false;
 
@@ -28,17 +31,15 @@ foreach ( $socialNetworks as $social_network ) {
 	<div class="wrap wrap--lg">
 
 		<?php 
-			if ($footer_logo2 && $footer_logo2_label): 
-				if($footer_logo2_url):
+			if ($logo_small): 
 			?>
-			<div class="footer__logo--bis">
+			<div class="footer__logo">
 				<a href="<?php echo $footer_logo2_url ?>">
-					<img src="<?php echo $this->themeSettingAssetUrl('logo_bis'); ?>" alt="<?php echo $footer_logo2_label; ?>" />
+					<img src="<?php echo $this->themeSettingAssetUrl('logo_small'); ?>" alt="<?php echo $siteTitle; ?>" />
 				</a>
 			</div>
-				<?php else: ?>
-			<div class="footer__logo--bis"><img src="<?php echo $this->themeSettingAssetUrl('logo_bis'); ?>" alt="<?php echo $footer_logo2_label; ?>" /></div>
-			<?php endif; ?>
+		<?php else: ?>
+			<div class="footer__logo"><img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" alt="<?php echo $siteTitle; ?>" /></div>
 		<?php endif; ?>
 
 		<?php if( $footer_menu ) : ?>
@@ -61,6 +62,19 @@ foreach ( $socialNetworks as $social_network ) {
 			</div>
 		<?php endif; ?>
 
+		<?php 
+			if ($footer_logo2 && $footer_logo2_label): 
+				if($footer_logo2_url):
+			?>
+			<div class="footer__logo--bis">
+				<a href="<?php echo $footer_logo2_url ?>">
+					<img src="<?php echo $this->themeSettingAssetUrl('logo_bis'); ?>" alt="<?php echo $footer_logo2_label; ?>" />
+				</a>
+			</div>
+				<?php else: ?>
+			<div class="footer__logo--bis"><img src="<?php echo $this->themeSettingAssetUrl('logo_bis'); ?>" alt="<?php echo $footer_logo2_label; ?>" /></div>
+			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if( $footer_copyright ) : ?>
 		<div class="footer__copyright">

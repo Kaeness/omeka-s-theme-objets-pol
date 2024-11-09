@@ -30,10 +30,10 @@ select {
 	appearance: none;
 	min-width: 200px;
 	padding: $gutter--xs $gutter--sm;
-	background: var(--icon-arrow-down) no-repeat right 8px center/16px;
+	background: var(--icon-arrow-down-primary) no-repeat right 8px center/16px;
 	@include transition;
 
 	&:focus {
-		background-image: var(--icon-arrow-up);
+		background-image: var(--icon-arrow-up-primary);
 	}
 }

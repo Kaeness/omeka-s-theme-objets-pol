@@ -1,14 +1,104 @@
 /* ------------	FONTS
 ----------------------------------------------------------- */
-/* Color packs selection defined in theme settings, css files assigned to each pack in css directory */
+// BRICOLAGE-GROTESQUE - TEXTES COURANTS
+/* bricolage-grotesque-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Bricolage Grotesque';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/bricolage-grotesque-v7-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* bricolage-grotesque-600 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Bricolage Grotesque';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/bricolage-grotesque-v7-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* bricolage-grotesque-800 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Bricolage Grotesque';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/bricolage-grotesque-v7-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+// BIORHYME - TEXTES COURANTS 2 : chapo, boutons
+/* biorhyme-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'BioRhyme';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/biorhyme-v17-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* biorhyme-700 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'BioRhyme';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/biorhyme-v17-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+// ROKKIT - TEXTES COURANTS ITALIQUES
+/* rokkitt-600italic - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Rokkitt';
+	font-style: italic;
+	font-weight: 600;
+	src: url('../fonts/rokkitt-v36-latin-600italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+// BEBBAS - TITRES
+/* bebas-neue-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'Bebas Neue';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/bebas-neue-v14-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+// BIORHYME EXPANDED - TITRES 3 : recherche
+/* biorhyme-expanded-regular - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'BioRhyme Expanded';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/biorhyme-expanded-v21-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* biorhyme-expanded-800 - latin */
+@font-face {
+	font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+	font-family: 'BioRhyme Expanded';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/biorhyme-expanded-v21-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 
 
 /* FONTS STYLE ---------------------------------------- */
-$font-family:		var(--font-global), Helvetica, Arial, serif;
-$font-headings:		var(--font-headings), sans-serif;
+$font-family:		'Bricolage Grotesque', Helvetica, Arial, serif;
+$font-family--2:	'BioRhyme', sans-serif;
+$font-family--3:	'Rokkitt', Helvetica, Arial, serif;
+$font-headings:		'Bebas Neue', sans-serif;
+$font-headings--2:	'BioRhyme Expanded', sans-serif;
 $font-menu:			$font-headings;
 $font-button:		$font-headings;
-$font-label:		$font-headings;
+$font-button--2:	$font-headings--2;
+$font-label:		$font-family;
 $font-icon:			"Font Awesome 5 Free";
 
 $light:		300;
@@ -19,7 +109,7 @@ $bold: 		700;
 $extra-bold:800;
 
 
-$font-size: 1em;			// Base 16px set on most browsers
+$font-size: 	1em;		// Base 16px set on most browsers
 $font-size--sm: 0.88889em;	// 14px with base 16px -- 16px with base 18px
 $font-size--md: 1.125em;	// 18px 
 
@@ -28,7 +118,7 @@ $line-height--xs: 1.15;
 $line-height--sm: 1.25;
 
 $font-size__h1: 2.22223em;	// 40px
-$font-size__h2: 1.55556em;	// 28px
+$font-size__h2: 1.77778em;	// 32px
 $font-size__h3: 1.33334em;	// 24px
 $font-size__h4: 1.16667em;	// 21px
 $font-size__h5: 1.11112em;	// 20px

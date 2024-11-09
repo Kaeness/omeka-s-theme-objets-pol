@@ -7,15 +7,12 @@
 			padding-top: $gutter--xl;
 			padding-bottom: $gutter--xl;
 		}
-		@include breakpoint(md) {
-			padding-top: 2 * $gutter--lg;
-			padding-bottom: 2 * $gutter--lg;
-		}
 	}
 		
-	&:not(.carousel) h2[class*='title'] {
-		@extend h1;
-		margin-bottom: $gutter--md;
+	h2[class*='title'] {
+		text-transform: uppercase;
+		text-align: center;
+		font-size: $font-size__h1;
 	}
 	.wrap > div[class*='text'] {
 		margin-bottom: $gutter--md;

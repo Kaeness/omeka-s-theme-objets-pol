@@ -3,11 +3,12 @@ button,
 input[type="button"],
 input[type="submit"] {
 	padding: 0.5 * $gutter--xs $gutter--sm;
-	border: 1px solid $border--button;
+	background-color: $bg-white;
+	border: 5px solid $border--button;
 	text-transform: uppercase;
 	font-family: $font-button;
 	font-weight: $medium;
-	color: $color-accent;
+	color: $color-button;
 	@include transition;	
 
 	&:hover,
@@ -18,11 +19,6 @@ input[type="submit"] {
 	}
 	&:visited {
 		border-color: $border--button;
-
-		&:hover,
-		&:focus {
-			border-color: $bg-primary;
-		}
 	}
 	&::before {
 		font-family: $font-icon;
@@ -47,8 +43,36 @@ button[type="submit"]:hover {
 .button {
 
 	&--small {
-		padding: 0.5 * $gutter--xs 0;
-		border-color: transparent transparent $border--button transparent;
+		position: relative;
+		margin-left: 80px;
+		padding: 0.5 * $gutter--xs;
+		background-color: $bg-body;
+		border: 5px solid transparent;
+		font-family: $font-button--2;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: -80px;
+			top: 0;
+			height: 100%;
+			width: 76px;
+			background-image: var(--icon-arrow-right-primary), var(--icon-arrow-right-primary), var(--icon-arrow-right-primary);
+			background-repeat: no-repeat;
+			background-position: left center, left 24px center, left 48px center;
+			background-size: 24px, 24px, 24px;
+		}
+
+		&:hover,
+		&:focus {			
+			background-color: $bg-white;
+			border-color: $border--button;
+			color: $color-global;
+
+			&:before {
+				background-image: var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary);
+			}
+		}
 	}
 	&--help {
 		@extend .button--small;

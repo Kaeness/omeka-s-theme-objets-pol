@@ -1,11 +1,77 @@
+.home section.edition {
+
+	& > .wrap {
+		padding-top: 0;
+	}
+}
 .edition {
 
 	&__content {
-		text-align: center;
 		
+
+		@include breakpoint(xs) {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			grid-template-areas: 'title text' 'title button';
+		}
 	}
 	&__title {
+		grid-area: title;
+		position: relative;
+		z-index: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: fit-content;
+		height: 175px;
+		@include margin-auto;
 		margin-bottom: $gutter;
+		margin-top: -$gutter--md;
+		font-size: 2em !important;
+
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: -$gutter;
+			top: -$gutter;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: $bg-secondary;
+		}
+		&__container {			
+			position: relative;
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			padding: $gutter;
+			border: 5px solid $border--1;
+			text-align: center;
+
+			&::after {
+				content: '';
+				position: absolute;
+				z-index: 1;
+				top: 100%;
+				left: 0;
+				display: block;
+				width: 100%;
+				height: 50px;
+				background: var(--home-title-square-point) no-repeat top calc(100% - 1px) center/contain;
+			}
+		}
+	}
+	&__text {
+		grid-area: text;
+		margin-top: $gutter--md;
+		padding: $gutter $gutter--md;
+		background-color: $bg-white;
+
+		@include breakpoint(xs) {
+			margin-top: 0;
+		}
 	}
 	&__baseline {
 		margin-bottom: $gutter--xs;
@@ -13,6 +79,8 @@
 		font-weight: $semi-bold;
 	}
 	&__button {
+		grid-area: button;
 		margin-top: $gutter--sm;
+		margin-left: $gutter--md;
 	}
 }

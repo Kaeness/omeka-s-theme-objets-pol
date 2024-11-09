@@ -58,18 +58,13 @@ $activePage = $nav->findActive($container); */
 	<?php if($class_plus == ' home'): ?>
 		<h1 class="screen-reader-text"><?php echo $escape($site->title()); ?></h1>
 	
-		<?php if( $this->themeSetting( 'homeslider_show') == 1 ):
-			echo $this->partial('common/theme/home-carousel', ['site' => $site, 'translate' => $translate]);
-			endif;
-		?>
-
 		<?php if( $this->themeSetting( 'edition_show') == 1 ): 
 			echo $this->partial('common/theme/home-edition', ['site' => $site, 'translate' => $translate]);
 			endif;
 		?>
 
-		<?php if( $this->themeSetting( 'home_itemsets_show') == 1 ): 
-			echo $this->partial('common/theme/home-collections', ['site' => $site, 'translate' => $translate]);
+		<?php if( $this->themeSetting( 'home_items_show') == 1 ): 
+			echo $this->partial('common/theme/home-items', ['site' => $site, 'translate' => $translate]);
 			endif;
 		?>
 
@@ -78,8 +73,8 @@ $activePage = $nav->findActive($container); */
 			endif;
 		?>
 
-		<?php if( $this->themeSetting( 'home_items_show') == 1 ): 
-			echo $this->partial('common/theme/home-items', ['site' => $site, 'translate' => $translate]);
+		<?php if( $this->themeSetting( 'home_itemsets_show') == 1 ): 
+			echo $this->partial('common/theme/home-collections', ['site' => $site, 'translate' => $translate]);
 			endif;
 		?>
 

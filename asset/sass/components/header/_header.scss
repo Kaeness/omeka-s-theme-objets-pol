@@ -78,6 +78,7 @@
 	&__logo {
 		grid-area: logo;
 		display: flex;
+		justify-content: center;
 
 		@include breakpoint(xs) {
 			padding-top: $gutter--lg;
@@ -85,35 +86,35 @@
 		@include breakpoint(md) {
 			padding-top: 0;
 		}
-
-		&.no-logo.left {
-			justify-content: center;
-
-			.site-title {
-				text-align: center;
-			}
-		}
-		&.no-logo {
-
-			.site-title {
-				margin-bottom: $gutter--sm;
-			}
-		}
-		&.center {
-			justify-content: center;
-		}
-		&.left {
-			justify-content: flex-start;
-
-			.site-title {
-				text-align: left;
-			}
-		}
-		
+		/*.site-title {
+			margin-bottom: $gutter--sm;
+		}*/		
 
 		img {
 			max-width: 450px;
-			max-height: 250px;
+
+			@include breakpoint(sm) {
+				max-width: 600px;
+			}
+			@include breakpoint(md) {
+				max-width: 700px;
+			}
+		}
+		.logo {
+
+			&--main:not(.logo-default) {
+				display: none;
+
+				@include breakpoint(sm) {
+					display: block;
+				}
+			}
+			&--small {
+
+				@include breakpoint(sm) {
+					display: none;
+				}
+			}
 		}
 
 
@@ -201,12 +202,11 @@
 	}
 
 	.wrap {
-		position: relative;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		padding: $gutter--md $gutter;
+		padding: $gutter $gutter;
 		background-image: var(--img-bg-search);
 		background-repeat: no-repeat;
 		background-position: center;
@@ -216,21 +216,16 @@
 			flex-direction: row;
 			gap: $gutter--sm;
 		}
+
+		@include breakpoint(sm) {
+			padding-top: $gutter--sm;
+			padding-bottom: $gutter--sm;
+		}
 		@include breakpoint(md) {
 			padding-left: 0;
 			padding-right: 0;
 		}
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 100%;
-			width: 100%;
-			background-color: rgba($bg-secondary, 0.3); 
-		}
-	}
-		
+	}		
 
 	form {
 		position: relative;
@@ -245,17 +240,6 @@
 			flex-grow: 1;
 		}
 	}
-	button[type="submit"] {
-		/*background-color: $bg-white;
-		border: 1px solid $bg-white;
-		border-radius: $gutter--md;
-
-		&:hover,
-		&:focus {
-			background-color: $bg-primary;
-			border-color: $bg-primary;
-		}*/
-	}
 	.button-container {		
 		position: relative;
 		z-index: 1;
@@ -267,22 +251,51 @@
 		width: max-content;
 	}
 }
+.page-banner {
+	height: $gutter--xl;
+	max-width: $width--xxl;
+	@include margin-auto;
+	background: var(--img-banner-default) no-repeat center/cover $bg-secondary;	
+}
 
-// Home variation
-.home .simple-search {
+// INNER PAGES VARIATION
+.home {
 	
-	.wrap {
-		padding-top: $gutter--xl;
-		padding-bottom: $gutter--xl;
-		background-image: var(--img-bg-search-home);
+	.page-banner {
+		height: 350px;
+		background-image: var(--img-banner-home-small);
 
-		@include breakpoint(sm) {
-			padding-top: 2 * $gutter--lg;
-			padding-bottom: 2 * $gutter--lg;
-		}
 		@include breakpoint(md) {
-			padding-top: $gutter--xxl;
-			padding-bottom: $gutter--xxl;
+			height: 450px;
+			background-image: var(--img-banner-home);
 		}
+		@include breakpoint(lg) {
+			height: 500px;
+			background-image: var(--img-banner-home);
+		}
+	}
+}
+.faceted-browse-page {
+
+	.page-banner {
+		background-image: var(--img-banner-facetbrowse);
+	}
+}
+.item.show {
+	
+	.page-banner {
+		background-image: var(--img-banner-item);
+	}
+}
+.item.browse {
+	
+	.page-banner {
+		background-image: var(--img-banner-itemset);
+	}
+}
+.search {
+	
+	.page-banner {
+		background-image: var(--img-banner-search);
 	}
 }

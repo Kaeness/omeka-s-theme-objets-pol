@@ -1,8 +1,47 @@
 .home .slider-items {
-	background-color: $bg-white;
-	@include box-shadow--md;
 
 	& + .wrap {
 		margin-top: $gutter--xl;
+	}
+	.button__container {
+		margin-top: $gutter--lg;
+		text-align: right;
+	}
+}
+.slider-items {
+
+	&__title {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 200px;
+		height: 200px;
+		@include margin-auto;
+		margin-bottom: $gutter--xl;
+
+		&::before {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: -$gutter;
+			top: -$gutter;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: $bg-secondary;
+			border-radius: 100%;
+		}
+		&::after {
+			content: '';
+			position: absolute;
+			z-index: -1;
+			left: 0;
+			top: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: var(--home-title-bubble) no-repeat center/contain;
+		}
 	}
 }

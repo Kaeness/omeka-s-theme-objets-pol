@@ -1,6 +1,10 @@
 <?php
 	$items_title = $this->themeSetting( 'home_items_title');
 	$items_text = $this->themeSetting( 'home_items_text');
+
+	$items_number = $this->themeSetting( 'show_items_number', '8' );
+	$items_label = $this->themeSetting('home_items_label');
+	$items_url = $this->themeSetting('home_items_url');
 ?>
 
 <section class="slider-items">
@@ -41,7 +45,7 @@
 
 						$home_items = $this->api()->search('items', [
 								'is_public' => 1,
-								'limit' => 12,
+								'limit' => $items_number,
 								'site_id' => $site->id(),
 								'sort_by' => 'created',
 								'sort_order' => 'desc',
@@ -69,11 +73,6 @@
 										<h3 class="slider-item__title">
 											<a href="<?php echo $home_item->url(); ?>"><?php echo $home_item->displayTitle(); ?></a>
 										</h3>
-										<?php
-											if ($metadataContent) {
-												echo '<div class="item-notice__block">'.$metadataContent.'</div>';
-											}
-										?>
 									</div>
 								</div>
 							</div>
@@ -84,6 +83,12 @@
 				</div>
 			</div>
 		</div>
+		
+		<?php if ($items_label && $items_url): ?>
+		<div class="button__container">
+			<a href="<?php echo $items_url; ?>" class="button button--small"><?php echo $items_label; ?></a>
+		</div>
+		<?php endif; ?>
 	</div>
 	<script>
 		document.addEventListener( 'DOMContentLoaded', function () {
@@ -92,7 +97,7 @@
 				keyboard: true,
 				type: 'loop',
 				interval: 8000,
-				perPage: 3,
+				perPage: 4,
 				breakpoints: {
 					979: { perPage: 2, },
 					599: { perPage: 1, }

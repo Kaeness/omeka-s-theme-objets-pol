@@ -96,12 +96,6 @@
 			width: 100%;
 			background: var(--icon-arrow-down) no-repeat center / 20px;
 		}
-		&[aria-label="Déplier"]::before {
-
-		}
-		&[aria-label="Replier"]::before {
-
-		}
 
 		@include breakpoint(md) {
 			display: none;
@@ -124,7 +118,7 @@
 			position: static;
 			display: grid;
 			grid-auto-flow: column;
-			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(120px, auto));
 			align-items: stretch;
 			justify-content: center;
 			column-gap: $gutter;
@@ -132,37 +126,68 @@
 			padding-top: 0.75 * $gutter;
 		}
 
+		a {
+			display: inline-block;
+			width: 100%;
+			padding: $gutter;
+
+			@include breakpoint(xs) {
+				padding-left: $gutter--sm;
+				padding-right: $gutter--sm;
+			}
+			@include breakpoint(md) {
+				padding: 0.75 * $gutter $gutter;
+			}
+		}
+
 		// First level of menu
-		& > li {	
-			border-bottom: 2px solid $bg-body;	
+		& > li {
+			position: relative;
+			padding: 0 0 0 $gutter--lg;
+			border-bottom: 2px solid $bg-dark;
+			font-size: $font-size__h4;
+
+			&.parent {
+				padding-right: 0;
+			}
 
 			@include breakpoint(md) {
 				position: relative;
 				display: flex;
 				flex-direction: column;
 				align-self: stretch;
+				padding-right: 0;
 				border-bottom: 0;
 				text-align: center;
 			}
 		}
 		& > li > a,
 		& > li > .parent-link > a {
+			position: relative;
+			padding-left: $gutter--xs;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: -$gutter--md;
+				top: 0;
+				display: block;
+				height: 100%;
+				width: $gutter--sm;
+				background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 208 208'%3E%3Cpath d='M0 24.924h-12.424V0H12.5v12.424L0 24.924' style='fill:%23d61800;fill-rule:nonzero' transform='translate(103.533) scale(8.33333)'/%3E%3C/svg%3E") no-repeat center/$gutter--sm;
+			}
 
 			@include breakpoint(md) {
 				display: flex;
 				align-items: center;
-				justify-content: center;
 				height: 100%;
-				background-color: $bg-primary;
-				border: 1px solid $bg-primary;
-				color: $color-light;
 			}
 			&:hover,
 			&:focus {
+				background-color: $bg-secondary;
 
-				@include breakpoint(md) {
-					background-color: $bg-white;
-					color: $color-accent;
+				&::before {
+					background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 208 208'%3E%3Cpath d='M0 24.924h-12.424V0H12.5v12.424L0 24.924' style='fill:%23000;fill-rule:nonzero' transform='translate(103.533) scale(8.33333)'/%3E%3C/svg%3E");
 				}
 			}
 		}
@@ -184,7 +209,7 @@
 				left: -9999px;
 				display: flex;
 				flex-direction: column;
-				width: 100%;
+				width: 250px;
 				padding: 0;
 				background-color: $bg-white;
 				box-shadow: 0 6px 16px rgba($bg-dark, 0.5);
@@ -201,8 +226,6 @@
 				right: 0;
 			}
 		}
-
-
 
 		& > li > ul > li ul {
 			
@@ -279,26 +302,60 @@
 	}
 }
 
-// Links & Active entries
+// ENTRIES WITH CHILDREN
 .header__nav nav ul.navigation {
 
-	a {
-		display: inline-block;
-		width: 100%;
-		padding: $gutter;
+	.parent-link {
+		display: grid;
+		grid-template-columns: 1fr $gutter--lg;
 
 		@include breakpoint(xs) {
-			padding-left: $gutter--sm;
-			padding-right: $gutter--sm;
+			grid-template-columns: 1fr $gutter--xl;
 		}
 		@include breakpoint(md) {
-			padding: 0.75 * $gutter $gutter;
+			display: block
+		}
+		
+		& > a {			
+
+			@include breakpoint(md) {
+				position: relative;
+				width: 100%;
+				padding-right: $gutter--lg;
+
+				&::after {
+					content: "";
+					position: absolute;
+					right: 0;
+					top: 0;
+					display: block;
+					height: 100%;
+					width: $gutter--md;
+					background: var(--icon-arrow-down-secundary) no-repeat right 12px center/16px;
+				}
+				&:hover::after,
+				&:focus::after {
+					background-image: var(--icon-arrow-down-black);
+				}
+			}
 		}
 	}
+	.active > .parent-link > a {
 
+		&::after {
+			background-image: var(--icon-arrow-down-secundary);
+		}
+		&:hover::after,
+		&:focus::after {
+			background-image: var(--icon-arrow-down-black);
+		}
+	}
+}
+// LINKS & ACTIVE ENTRIES
+.header__nav nav ul.navigation {
 
 	// FIRST LEVEL MENU
-	& > li > a,
+	/*& > li > a,
 	& > li > .parent-link > a {
 
 		@include breakpoint(md) {
@@ -344,7 +401,7 @@
 		@include breakpoint(md) {
 			
 		}
-	}
+	}*/
 	// SECOND LEVEL MENU
 	& li li > a,
 	& li li > .parent-link > a {
@@ -392,53 +449,6 @@
 
 		@include breakpoint(md) {
 			padding-left: calc( 2 * #{$gutter} + #{$gutter--sm} );
-		}
-	}
-	
-	// ENTRY WITH CHILDREN
-	.parent-link {
-		display: grid;
-		grid-template-columns: 1fr $gutter--lg;
-
-		@include breakpoint(xs) {
-			grid-template-columns: 1fr $gutter--xl;
-		}
-		@include breakpoint(md) {
-			display: block
-		}
-		
-		& > a {			
-
-			@include breakpoint(md) {
-				position: relative;
-				width: 100%;
-				padding-right: $gutter--md;
-
-				&::after {
-					content: "";
-					position: absolute;
-					right: 0;
-					top: 0;
-					display: block;
-					height: 100%;
-					width: $gutter--md;
-					background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:%23fff;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E") no-repeat right 12px center/16px;
-				}
-				&:hover::after,
-				&:focus::after {
-					background-image: var(--icon-arrow-down);
-				}
-			}
-		}
-	}
-	.active > .parent-link > a {
-
-		&::after {
-			background-image: var(--icon-arrow-down);
-		}
-		&:hover::after,
-		&:focus::after {
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2' viewBox='0 0 299 169'%3E%3Cpath d='M8.296 120.55h293.023v167.506H8.296z' style='fill:none' transform='matrix(1.0204 0 0 1.00892 -8.466 -121.625)'/%3E%3Cpath d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192Z' style='fill:%23fff;fill-rule:nonzero' transform='translate(-10.45 -191.825)'/%3E%3C/svg%3E");
 		}
 	}
 }

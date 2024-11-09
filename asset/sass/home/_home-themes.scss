@@ -1,19 +1,110 @@
 .home-themes {
+
+	&__title {
+		position: relative;
+		width: fit-content;
+		@include margin-auto;
+		margin-bottom: $gutter--xl;
+		padding-left: $gutter--md;
+		padding-right: $gutter--md;	
+		line-height: 1;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: -$gutter;
+			z-index: -1;
+			display: block;
+			height: 100%;
+			width: 100%;
+			background-color: $bg-secondary;
+		}
+
+		&__container {
+			position: relative;
+			padding: $gutter--sm $gutter--lg;
+			border: 5px solid $border--1;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 100%;
+				left: 0;
+				display: block;
+				width: 100%;
+				height: 50px;
+				background: var(--home-title-rectanglepoint) no-repeat top 100% center/contain;
+			}
+		}
+	}
 	
 	ul {
 		display: grid;
-		grid-rows-gap: $gutter--md;
+		grid-row-gap: $gutter--md;
 		margin: 0;
 		padding: 0;
 		list-style-type: none;
 		
 		@include breakpoint(xs) {
 			grid-template-columns: 1fr 1fr;
-			grid-columns-gap: $gutter--md;
+			grid-column-gap: $gutter--md;
 		}
 		@include breakpoint(sm) {
 			grid-template-columns: 1fr 1fr 1fr;
-			grid-columns-gap: $gutter--md;
 		}
+		@include breakpoint(md) {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+	li {
+		position: relative;
+		padding: $gutter;
+		background-color: $bg-white;
+		@include transition;
+
+		&::before,
+		&::after {
+			content:'';
+			position: absolute;
+			top: 0;
+			height: 100%;
+			display: block;
+			@include transition;
+		}
+		&::before {
+			width: 5px;
+			background-color: $bg-dark;
+		}
+		&::after {
+			width: 28px;
+			background: var(--icon-arrow-right-secondary) no-repeat left top 0.75 * $gutter / contain;
+		}
+
+		&:hover,
+		&:focus-within {
+			background-color: $bg-secondary;
+
+			&::after {
+				background-image: var(--icon-arrow-right-black);
+			}
+		}
+	}
+	li a {
+		display: block;
+		padding-left: $gutter--md;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	.button__container {
+		margin-top: $gutter--lg;
+		text-align: center;
 	}
 }

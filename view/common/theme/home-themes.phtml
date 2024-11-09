@@ -5,18 +5,17 @@ $escAttr = $this->plugin('escapeHtmlAttr');
 
 $siteTitle = $site->title();
 
-?>
-
-
-<?php 
-
 	$themes_title = $this->themeSetting('home_themes_title');
 	$themes_text = $this->themeSetting('home_themes_text');
+	$themes_label = $this->themeSetting('home_themes_label');
+	$themes_url = $this->themeSetting('home_themes_url');
 ?>	
 <section class="home-themes">
-	<div class="wrap wrap--md">
+	<div class="wrap wrap--lg">
 
-		<h2 class="home-themes__title"><?php if( $themes_title ): echo $themes_title; else: echo $translate('Discover other items'); endif; ?></h2>
+		<h2 class="home-themes__title">
+			<div class="home-themes__title__container"><?php if( $themes_title ): echo $themes_title; else: echo $translate('Discover other items'); endif; ?></div>
+		</h2>
 
 		<?php if( $themes_text ): echo '<div class="home-themes__text wrap wrap--sm">'.$themes_text.'</div>';  endif; ?>
 
@@ -24,27 +23,25 @@ $siteTitle = $site->title();
 			<?php
 			for($numTheme=1; $numTheme<=10; $numTheme++):
 			
-				$theme_thumbnail = $this->themeSetting('theme_image'.$numTheme);
 				$theme_title = $this->themeSetting('theme_title'.$numTheme);
 				$theme_url = $this->themeSetting('theme_url'.$numTheme);
 
-				if ($theme_thumbnail && $theme_title):
-
-					if($theme_url):
-						$theme = '<a href="'.$theme_url.'" target="_blank" title="'.$theme_title.' - '.$translate('Open new tab').'"><img src="'.$this->themeSettingAssetUrl('theme_image'.$numTheme).'" alt="'.$theme_title.'"><h3>'.$theme_title.'</h3></a>';
-					else:
-						$theme = '<img src="'.$this->themeSettingAssetUrl('theme_image'.$numTheme).'" alt="'.$theme_title.'">';
-					endif;
+				if ($theme_title && $theme_url):
+					$theme = '<a href="'.$theme_url.'" target="_blank" title="'.$theme_title.'"><h3>'.$theme_title.'</h3></a>';
 				?>
 				<li class="home-themes__item">
 					<?php echo $theme; ?>
 				</li>
 
-				<?php 	
+				<?php 
 				endif;
 			endfor; 
 			?>
 		</ul>
-
+		<?php if ($themes_label && $themes_url): ?>
+		<div class="button__container">
+			<a href="<?php echo $themes_url; ?>" class="button button--small"><?php echo $themes_label; ?></a>
+		</div>
+		<?php endif; ?>
 	</div>
 </section>

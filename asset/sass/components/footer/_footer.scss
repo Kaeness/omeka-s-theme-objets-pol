@@ -16,24 +16,40 @@
 		&:has(.footer__logo--bis) {
 
 			@include breakpoint(md) {
-				grid-template-columns: $gutter--xxl 1fr 1fr;
-				grid-template-areas: 'logo menu menu' 'logo socials copyright';
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-areas: 'logo menu logo-bis' 'logo menu logo-bis' 'copyright copyright copyright';
 			}
 		}
 	}
 
-
-	&__logo--bis {
+	&__logo {
 		grid-area: logo;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		img {
-			max-width: 100px;
-			max-height: 100px;
+			max-width: 250px;
+			max-height: 250px;
+		}
+	}
+	&__logo--bis {
+		grid-area: logo-bis;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			max-width: 190px;
+			max-height: 190px;
 		}
 	}
 	
 	nav {
 		grid-area: menu;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		
 
 		ul {
