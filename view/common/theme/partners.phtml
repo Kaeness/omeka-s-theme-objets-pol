@@ -23,6 +23,7 @@ $siteTitle = $site->title();
 	if($partnerImage && $partnerLabel):
 	?>
 	<div class="footer-top partners<?php echo $class_allpages; ?>">
+		<div class="partners__separator"></div>
 		<div class="wrap wrap--lg">
 			<?php echo ($partners_title) ? '<p class="partners__title">'.$partners_title.'</p>' : ''; ?>
 			<ul class="partners__list">
@@ -51,7 +52,7 @@ $siteTitle = $site->title();
 				?>
 			</ul>
 				
-			<?php echo ($partners_label && $partners_url) ? '<p class="partners__button"><a href="'.$partners_url.'" class="button">'.$partners_label.'</a></p>' : ''; ?>
+			<?php echo ($partners_label && $partners_url) ? '<p class="partners__button"><a href="'.$partners_url.'" class="button button--xtrasmall">'.$partners_label.'</a></p>' : ''; ?>
 		</div>
 			
 	</div>

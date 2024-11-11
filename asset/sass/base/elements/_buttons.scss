@@ -8,6 +8,7 @@ input[type="submit"] {
 	text-transform: uppercase;
 	font-family: $font-button;
 	font-weight: $medium;
+	font-size: 0.88889em;
 	color: $color-button;
 	@include transition;	
 
@@ -44,6 +45,7 @@ button[type="submit"]:hover {
 
 	&--small {
 		position: relative;
+		display: block;
 		margin-left: 80px;
 		padding: 0.5 * $gutter--xs;
 		background-color: $bg-body;
@@ -71,6 +73,36 @@ button[type="submit"]:hover {
 
 			&:before {
 				background-image: var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary);
+			}
+		}
+	}
+	&--xtrasmall {
+		position: relative;
+		display: block;
+		padding: 0.5 * $gutter--xs 0.5 * $gutter--xs 0.5 * $gutter--xs $gutter--md;
+		background-color: $bg-body;
+		border: 1px solid;
+		border-color: $border--1 $border--1 transparent $border--1;
+		font-family: $font-button--2;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: $gutter--md;
+			background: var(--icon-arrow-right-primary) no-repeat left 8px center/ 12px;
+		}
+
+		&:hover,
+		&:focus {			
+			background-color: $bg-secondary;
+			border-color: $bg-primary $bg-primary transparent $bg-primary;
+			color: $color-global;
+
+			&:before {
+				background-image: var(--icon-arrow-right-black);
 			}
 		}
 	}

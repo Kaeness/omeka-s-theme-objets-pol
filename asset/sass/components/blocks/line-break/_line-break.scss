@@ -1,6 +1,9 @@
-.break.opaque {
-	border-bottom-width: 2px;
-	border-bottom-color: $bg-primary;
+.break.opaque,
+hr,
+.block hr {
+	border-width: 0 0 5px;
+	border-bottom-color: $bg-secondary;
+	color: $bg-secondary;
 }
 
 .break.img-separator {

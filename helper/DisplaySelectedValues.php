@@ -50,7 +50,7 @@ class DisplaySelectedValues extends AbstractHelper
 
 						$propertyClass = str_replace(':', '-', $propertyValue);
 						$metadataContent .= '<div class="property resource__property '.$propertyClass.'">';
-						$metadataContent .= ($showValueLabel) ? '<dt class="label">'.$propertyLabel.$translate(': ').'</dt>' : '';
+						$metadataContent .= ($showValueLabel) ? '<dt class="label">'.$propertyLabel.'</dt>' : '';
 
 						$propertyDataValues = array();
 						foreach ($propertyData['values'] as $value) {

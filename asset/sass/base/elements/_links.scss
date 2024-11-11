@@ -5,9 +5,9 @@ a {
 .block {
 
 	a:not(.button) {
-		font-weight: $medium;
+		font-weight: $semi-bold;
 		color: $color-global;
-		border-bottom: 2px solid $border--link;
+		border-bottom: 4px solid $border--link;
 
 		&:hover,
 		&:focus,

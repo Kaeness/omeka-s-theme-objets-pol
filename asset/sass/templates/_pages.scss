@@ -10,10 +10,19 @@
 	&-inner {
 		padding-left: $gutter;
 		padding-right: $gutter;
+		background-color: $bg-white;
 
 		@include breakpoint(sm) {
-			padding-left: 0;
-			padding-right: 0;
+			padding-left: $gutter--md;
+			padding-right: $gutter--md;
+		}
+		@include breakpoint(md) {
+			padding-left: $gutter--lg;
+			padding-right: $gutter--lg;
+		}
+		@include breakpoint(lg) {
+			padding-left: $gutter--xl;
+			padding-right: $gutter--xl;
 		}
 	}
 
@@ -32,12 +41,33 @@
 		position: relative;
 	}
 
+	h2 {
+		max-width: $width--xxs;
+		padding: $gutter $gutter 0 $gutter;
+		@include margin-auto;
+		background-color: $bg-secondary;
+		text-align: 0;
+	}
 	p {
 		margin-bottom: $gutter;
 
 		&:last-child {
 			margin-bottom: 0;
 		}
+	}
+	.page-chapo {
+		padding: 0 0 $gutter--lg 0;
+		border-bottom: 5px solid $bg-secondary;
+
+		&::before {
+			left: -$gutter--lg;
+			top: -0.5 * $gutter;
+		}
+		&::after {
+			right: -$gutter--lg;
+			bottom: $gutter--md;
+		}
+
 	}
 }
 

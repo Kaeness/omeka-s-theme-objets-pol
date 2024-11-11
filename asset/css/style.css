@@ -4,7 +4,7 @@ Theme Name: Objets Pol
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 0.1.0
+Version: 0.1.1
 Omeka Version Constraint: ^4.1.1
 */
 /*--------------------------------------------------------------
@@ -834,6 +834,7 @@ input[type=submit] {
   text-transform: uppercase;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 500;
+  font-size: 0.88889em;
   color: #000;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -894,6 +895,7 @@ button[type=submit]:hover {
 
 .button--small, .button--help {
   position: relative;
+  display: block;
   margin-left: 80px;
   padding: 4px;
   background-color: #F9F9F9;
@@ -919,6 +921,32 @@ button[type=submit]:hover {
 }
 .button--small:hover:before, .button--help:hover:before, .button--small:focus:before, .button--help:focus:before {
   background-image: var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary), var(--icon-arrow-right-secondary);
+}
+.button--xtrasmall {
+  position: relative;
+  display: block;
+  padding: 4px 4px 4px 32px;
+  background-color: #F9F9F9;
+  border: 1px solid;
+  border-color: #000 #000 transparent #000;
+  font-family: "BioRhyme Expanded", sans-serif;
+}
+.button--xtrasmall::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 32px;
+  background: var(--icon-arrow-right-primary) no-repeat left 8px center/12px;
+}
+.button--xtrasmall:hover, .button--xtrasmall:focus {
+  background-color: #F2AE8F;
+  border-color: #B71E00 #B71E00 transparent #B71E00;
+  color: #000;
+}
+.button--xtrasmall:hover:before, .button--xtrasmall:focus:before {
+  background-image: var(--icon-arrow-right-black);
 }
 .button--help {
   text-transform: none;
@@ -1098,9 +1126,9 @@ a {
 }
 
 .block a:not(.button) {
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
-  border-bottom: 2px solid #E6E1E2;
+  border-bottom: 4px solid #E6E1E2;
 }
 .block a:not(.button):hover, .block a:not(.button):focus, .block a:not(.button):visited:hover, .block a:not(.button):visited:focus {
   background-color: #B71E00;
@@ -3065,6 +3093,7 @@ h6,
   width: calc(100% + 2 * 16px);
   margin-left: -16px;
   margin-right: -16px;
+  background-color: #F9F9F9;
 }
 @media (min-width: 768px) {
   .page-layout-normal .block.block-pageTitle {
@@ -3508,9 +3537,12 @@ h6,
 
 /* Line Break
 --------------------------------------------- */
-.break.opaque {
-  border-bottom-width: 2px;
-  border-bottom-color: #B71E00;
+.break.opaque,
+hr,
+.block hr {
+  border-width: 0 0 5px;
+  border-bottom-color: #F2AE8F;
+  color: #F2AE8F;
 }
 
 .break.img-separator {
@@ -4286,7 +4318,6 @@ h6,
 .footer {
   margin-top: 128px;
   padding: 32px 16px;
-  border-top: 2px solid #D8CFD2;
 }
 .footer .wrap, .footer .item.show .section--edito__title, .item.show .footer .section--edito__title,
 .footer .item.show .section--relation__title,
@@ -4714,15 +4745,23 @@ h6,
 --------------------------------------------------*/
 .partners + .footer,
 #content:has(.partners:last-child) + .footer {
-  margin-top: 0;
+  margin-top: 24px;
 }
 
 .partners {
   margin-top: 128px;
-  padding: 64px 16px 48px;
+}
+.partners__separator {
+  height: 64px;
+  max-width: 1920px;
+  margin-right: auto;
+  margin-left: auto;
+  background: var(--img-footer-separator) no-repeat center/cover #F2AE8F;
+}
+.partners > .wrap, .item.show .partners > .section--edito__title,
+.item.show .partners > .section--relation__title, .search-results .partners > .noresults, .partners > .site-page-pagination {
+  padding: 24px 16px 0;
   background-color: #FFF;
-  -webkit-box-shadow: inset 0 24px 24px -24px rgba(0, 0, 0, 0.25);
-          box-shadow: inset 0 24px 24px -24px rgba(0, 0, 0, 0.25);
 }
 .partners__list {
   display: -webkit-box;
@@ -4757,16 +4796,20 @@ h6,
 .partners img {
   max-height: 80px;
   max-width: 300px;
-  mix-blend-mode: multiply;
-  -webkit-filter: grayscale(100%);
-          filter: grayscale(100%);
+  padding: 8px;
+  border: 3px solid transparent;
 }
 .partners img:hover, .partners img:focus {
-  -webkit-filter: grayscale(0%);
-          filter: grayscale(0%);
+  bordercolor: #000;
 }
 .partners__button {
-  text-align: right;
+  text-align: center;
+}
+.partners__button .button, .partners__button .site-page-pagination a, .site-page-pagination .partners__button a {
+  background-color: #FFF;
+}
+.partners__button .button:hover, .partners__button .site-page-pagination a:hover, .site-page-pagination .partners__button a:hover, .partners__button .button:focus, .partners__button .site-page-pagination a:focus, .site-page-pagination .partners__button a:focus {
+  background-color: #F2AE8F;
 }
 
 /* -----------------------------------------------
@@ -5031,7 +5074,7 @@ h6,
   position: absolute;
   left: 0;
   top: -24px;
-  z-index: -1;
+  z-index: 0;
   display: block;
   height: 100%;
   width: 100%;
@@ -5175,11 +5218,24 @@ h6,
 .blocks-inner {
   padding-left: 16px;
   padding-right: 16px;
+  background-color: #FFF;
 }
 @media (min-width: 768px) {
   .blocks-inner {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media (min-width: 1080px) {
+  .blocks-inner {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+@media (min-width: 1366px) {
+  .blocks-inner {
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }
 .blocks.wrap, .item.show .blocks.section--edito__title,
@@ -5199,11 +5255,31 @@ h6,
 .blocks .block:nth-child(2) {
   position: relative;
 }
+.blocks h2 {
+  max-width: 450px;
+  padding: 16px 16px 0 16px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #F2AE8F;
+  text-align: 0;
+}
 .blocks p {
   margin-bottom: 16px;
 }
 .blocks p:last-child {
   margin-bottom: 0;
+}
+.blocks .page-chapo {
+  padding: 0 0 48px 0;
+  border-bottom: 5px solid #F2AE8F;
+}
+.blocks .page-chapo::before {
+  left: -48px;
+  top: -8px;
+}
+.blocks .page-chapo::after {
+  right: -48px;
+  bottom: 32px;
 }
 
 .page-chapo {

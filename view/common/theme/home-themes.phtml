@@ -27,7 +27,7 @@ $siteTitle = $site->title();
 				$theme_url = $this->themeSetting('theme_url'.$numTheme);
 
 				if ($theme_title && $theme_url):
-					$theme = '<a href="'.$theme_url.'" target="_blank" title="'.$theme_title.'"><h3>'.$theme_title.'</h3></a>';
+					$theme = '<a href="'.$theme_url.'" title="'.$theme_title.'"><h3>'.$theme_title.'</h3></a>';
 				?>
 				<li class="home-themes__item">
 					<?php echo $theme; ?>
