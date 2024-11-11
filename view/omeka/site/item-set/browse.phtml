@@ -12,13 +12,13 @@ $this->htmlElement('body')->appendAttribute('class', 'item-set item-sets resourc
 
 
 <div class="breadcrumbs wrap wrap--lg">
-	<a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $translate('All item sets'); ?></span>
+	<a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $translate('All Item Sets'); ?></span>
 </div>
 
 <div class="blocks">
 
 	<div class="wrap wrap--md">
-		<?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+		<div class="page-title"><?php echo $this->pageTitle($translate('Item sets'), 1); ?></div>
 
 		<?php echo $this->searchFilters(); ?>
 

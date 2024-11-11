@@ -4,22 +4,22 @@ $advsearch_url = $this->themeSetting('advsearch_url');
 
 $searchType = $this->siteSetting('search_type', 'sitewide');
 switch ($searchType) {
-    case 'cross-site':
-        $searchAction = $this->url('site/cross-site-search', ['action' => 'results'], true);
-        break;
-    case 'sitewide':
-    default:
-        $searchAction = $this->url('site/resource', ['controller' => 'index', 'action' => 'search'], true);
+	case 'cross-site':
+		$searchAction = $this->url('site/cross-site-search', ['action' => 'results'], true);
+		break;
+	case 'sitewide':
+	default:
+		$searchAction = $this->url('site/resource', ['controller' => 'index', 'action' => 'search'], true);
 }
 $searchValue = $this->escapeHtml($this->params()->fromQuery('fulltext_search', ''));
 ?>
 
 <form action="<?php echo $this->escapeHtml($searchAction); ?>" id="search-form">
-    <input type="text" name="fulltext_search" value="<?php echo $searchValue; ?>"
-        placeholder="<?php echo $translate('Search'); ?>"
-        aria-label="<?php echo $translate('Search'); ?>">
-    <button type="submit"><?php echo $translate('Search'); ?></button>
+	<input type="text" name="fulltext_search" value="<?php echo $searchValue; ?>"
+		placeholder="<?php echo $translate('Search'); ?>"
+		aria-label="<?php echo $translate('Search'); ?>">
+	<button type="submit"><?php echo $translate('Search'); ?></button>
 </form>
-<div class="button-container">
-    <a href="<?php echo $site->url(); ?><?php echo $advsearch_url; ?>" class="button button--advanced"><i class="fas fa-plus-circle"></i><?php echo $translate('Advanced search'); ?></a>
-</div>
+<!-- <div class="button-container">
+	<a href="<?php //echo $site->url(); ?><?php //echo $advsearch_url; ?>" class="button button--advanced"><i class="fas fa-plus-circle"></i><?php //echo $translate('Advanced search'); ?></a>
+</div> -->

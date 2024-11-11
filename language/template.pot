@@ -1,32 +1,26 @@
 # Theme translation
-# Copyright (C) 2023
-# This file is distributed under the same license as the Ioka package.
 # Kaeness <contact@kaeness.fr>, 2024.
 #
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Objets Pol\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 10:41+0200\n"
+"POT-Creation-Date: 2024-11-10 16:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Kaeness <contact@kaeness.fr>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
-
-
 
 #: ../view/layout/layout.phtml:159
 msgid "Back to top"
 msgstr ""
-
-
-
 
 #: /../view/common/search-form.phtml:8
 msgid "Simple Search"
@@ -68,8 +62,6 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-
-
 #: /../view/omeka/site/page/show.phtml:44
 msgid "News"
 msgstr ""
@@ -110,8 +102,6 @@ msgstr ""
 msgid ": "
 msgstr ""
 
-
-
 #: ../view/omeka/site/item/browse.phtml:29
 msgid "All Item Sets"
 msgstr ""
@@ -127,13 +117,14 @@ msgstr ""
 #: ../view/omeka/site/item/browse.phtml:88
 msgid "The items"
 msgstr ""
+
+#: ../view/omeka/site/item/browse.phtml:92
+msgid "Browse items"
 msgstr ""
 
 #: ../view/omeka/site/item/browse.phtml:96
 msgid "In this collection"
 msgstr ""
-
-
 
 #: ../view/omeka/site/item/show.phtml:48
 msgid "All items sets"
@@ -155,7 +146,9 @@ msgstr ""
 msgid "Related documents"
 msgstr ""
 
-
+#: ../view/omeka/site/item/show.phtml:439
+msgid "Related resources"
+msgstr ""
 
 #: ../view/search/form/standard.phtml:36
 msgid "Simple search"
@@ -180,7 +173,6 @@ msgstr ""
 #: ../view/search/form/standard.phtml:48
 msgid "“Matches pattern” means that results ONLY matche with words entered as text. Allowed to “begin with” and “end with” by adding an asterisk at the beginning and the end of the words."
 msgstr ""
-msgstr ""
 
 #: ../view/search/form/standard.phtml:192
 msgid "Reset Search"
@@ -194,15 +186,9 @@ msgstr ""
 msgid "Add filters group"
 msgstr ""
 
-
-
-
 #: ../view/item-sets-tree/site/index/index.phtml:12
 msgid "All Item Sets"
 msgstr ""
-
-
-
 
 # ----
 msgid "No result found"
@@ -210,3 +196,4 @@ msgstr ""
 
 msgid "Add filter group"
 msgstr ""
+

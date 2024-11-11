@@ -8,36 +8,68 @@
 
 	.wrap {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 		grid-column-gap: $gutter;
 		grid-row-gap: $gutter--sm;
-		grid-template-areas: 'menu menu' 'socials copyright';
+
 
 		&:has(.footer__logo--bis) {
 
+			@include breakpoint(xs) {
+				grid-template-columns: 2fr 1fr;
+				grid-template-areas: 'logo logo''menu logo-bis' 'socials copyright';
+			}
 			@include breakpoint(md) {
 				grid-template-columns: 1fr 1fr 1fr;
 				grid-template-areas: 'logo menu logo-bis' 'logo menu logo-bis' 'copyright copyright copyright';
 			}
 		}
+		&:not(:has(.footer__logo--bis)) {
+
+			@include breakpoint(xs) {
+				grid-template-columns: 2fr 1fr;
+				grid-template-areas: 'logo logo''menu menu' 'socials copyright';
+			}
+			@include breakpoint(md) {
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-areas: 'logo menu' 'logo menu' 'copyright copyright';
+			}
+		}
 	}
 
-	&__logo {
-		grid-area: logo;
+	&__logo {		
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		@include breakpoint(xs) {
+			grid-area: logo;
+		}
 
 		img {
 			max-width: 250px;
 			max-height: 250px;
 		}
 	}
-	&__logo--bis {
-		grid-area: logo-bis;
+	&__logo--bis {		
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		margin-top: $gutter--md;
+		padding-top: $gutter;
+		border-top: 3px solid $border--1;
+
+		@include breakpoint(xs) {
+			grid-area: logo-bis;
+			margin-top: 0;
+			padding-top: 0;
+			padding-left: $gutter;
+			border-top: 0;
+			border-left: 3px solid $border--1;
+		}
+		@include breakpoint(md) {
+			padding-left: 0;
+		}
 
 		img {
 			max-width: 190px;
@@ -45,38 +77,67 @@
 		}
 	}
 	
-	nav {
-		grid-area: menu;
+	nav {		
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		@include breakpoint(xs) {
+			grid-area: menu;
+		}
 		
 
 		ul {
 			display: flex;
-			gap: $gutter;
+			flex-flow: row wrap;
+			gap: $margin;
+			row-gap: $gutter;
+			width: 100%;
 			padding: 0;
 			margin: 0;
+
+			@include breakpoint(xs) {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-row-gap: $gutter;
+				grid-column-gap: $gutter;
+			}
 		}
 		li {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			width: $one-third;
 			list-style-type: none;
 
-			&:not(:last-child)::after {
-				content: '•';
-				padding-left: $gutter;
+			@include breakpoint(xs) {
+				width: 100%;
 			}
 		}
 
 		a {
+			position: relative;
+			padding-top: $gutter--sm;
 			text-transform: uppercase;
+			text-align: center;
+			line-height: $line-height--sm;
 			font-family: $font-headings;
-			font-weight: $semi-bold;
-			color: $color-accent;
+
+			&::before {
+				content: '';
+				position: absolute;
+				left: calc(50% - #{$gutter--xs} );
+				top: 0;
+				display: block;
+				width: $gutter;
+				height: $gutter;
+				background-color: $bg-dark;
+				border-radius: $gutter;
+			}
 
 			&:hover,
 			&:focus {
-				box-shadow: inset 0 -3px 0 0 $border--link;
-				color: $color-global;
+				box-shadow: inset 0 -3px 0 0 $border--1;
 			}
 		}
 	}
@@ -85,6 +146,10 @@
 		display: flex;
 		flex-flow: row wrap;
 		gap: $gutter;
+
+		@include breakpoint(xs) {
+			grid-area: socials;
+		}
 
 		a {
 			display: flex;
@@ -110,12 +175,15 @@
 		}
 	}
 
-	&__copyright {
-		grid-area: copyright;
+	&__copyright {		
 		text-align: right;
 		font-family: $font-headings;
 		font-weight: $semi-bold;
 		font-size: 0.8889em;
+
+		@include breakpoint(xs) {
+			grid-area: copyright;
+		}
 	}
 }
 

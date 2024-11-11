@@ -7,6 +7,8 @@ $this->headScript()->appendFile($this->assetUrl('vendor/tablesaw/tablesaw.jquery
 $this->facetedBrowse()->prepareFacets();
 
 $this->htmlElement('body')->appendAttribute('class', 'faceted-browse-page resource browse');
+
+$translate = $this->plugin('translate');
 $this->pageTitle($page->title(), 2);
 
 $categories = $page->categories();
@@ -18,6 +20,8 @@ if (1 === count($categories)) {
 	$categoryQuery = $category->query();
 }
 ?>
+
+<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <span><?php echo $this->pageTitle($page->title(), 0); ?></span></nav>
 <div class="wrap wrap--lg">
 	<div id="container"
 		data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"

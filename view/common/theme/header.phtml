@@ -9,20 +9,13 @@ $logo = $this->themeSetting('logo');
 $logo_small = $this->themeSetting('logo_small');
 ?>
 <header class="header">
-	<?php /*if ($this->getHelperPluginManager()->has('languageSwitcher')):*/ ?>
+	<?php if ($this->getHelperPluginManager()->has('languageSwitcher')): ?>
 	<div class="header__top">
 		<div class="wrap wrap--lg">
-			<?php //echo $this->languageSwitcher(); ?>
-
-			<!-- AFFICHAGE DE TEST, À SUPPRIMER AVANT MEP -->
-
-			<ul class="language-switcher locale-flag">
-				<li><span class="active" title="français">fr</span></li>
-				<li><a href="#" title="English (United States)">en</a></li>
-			</ul>
+			<?php echo $this->languageSwitcher(); ?>
 		</div>			
 	</div>
-	<?php /*endif;*/ ?>
+	<?php endif; ?>
 
 	<div class="wrap wrap--lg">
 

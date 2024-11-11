@@ -1,3 +1,8 @@
+legend {
+	font-family: $font-legend;
+	font-size: $font-size__h3;
+	font-weight: 400;
+}
 label,
 .label {
 	font-family: $font-label;
@@ -16,7 +21,8 @@ textarea {
 	padding: 0.5 * $gutter--xs $gutter;
 	border: 1px solid $border--form;
 	line-height: 1;
-	font-size: 1em;
+	font-family: $font-family--2;
+	font-size: 0.83334em;
 
 	&:focus,
 	&:focus-visible {
@@ -36,4 +42,9 @@ select {
 	&:focus {
 		background-image: var(--icon-arrow-up-primary);
 	}
+}
+*::placeholder {
+	font-family: $font-headings--2;
+	font-size: $font-size--sm;
+	color: $color-global;
 }

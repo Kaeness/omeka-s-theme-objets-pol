@@ -1,0 +1,28 @@
+octopusviewer-viewer {
+	.octopusviewer {
+
+		&-header {
+			border-bottom: 5px solid $border--1;
+		}
+	}
+}
+#openFile, #secondaryToolbar #secondaryOpenFile {
+    display: none;
+}
+
+#print, #secondaryToolbar #secondaryPrint {
+    display: none;
+}
+
+#download, #secondaryToolbar #secondaryDownload {
+    display: none;
+}
+
+#download + .verticalToolbarSeparator,
+#secondaryDownload + .horizontalToolbarSeparator {
+    display: none;
+}
+
+#editorModeButtons, #editorModeSeparator {
+    display: none;
+}

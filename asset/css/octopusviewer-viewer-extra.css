@@ -1,0 +1,8 @@
+octopusviewer-viewer {
+	.octopusviewer {
+
+		&-header {
+			border-bottom: 5px solid $border--1;
+		}
+	}
+}

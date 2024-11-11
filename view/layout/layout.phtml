@@ -1,14 +1,16 @@
 <?php
 $translate = $this->plugin('translate');
-$BannerHome = $this->themeSettingAssetUrl('banner_large');
-$BannerHomeSmall = $this->themeSettingAssetUrl('banner_home_small');
-$BannerEdito = $this->themeSettingAssetUrl('banner_edito');
-$BannerItems = $this->themeSettingAssetUrl('banner_items');
-$BannerItemsets = $this->themeSettingAssetUrl('banner_itemsets');
-$BannerFacetBrowse = $this->themeSettingAssetUrl('banner_facetbrowse');
-$BannerSearch = $this->themeSettingAssetUrl('banner_search');
-$FooterSeparator = $this->themeSettingAssetUrl('footer_separator');
-$separator = $this->themeSettingAssetUrl('separator');
+
+$BannerHome = 			$this->themeSettingAssetUrl('banner_large');
+$BannerHomeSmall = 		$this->themeSettingAssetUrl('banner_home_small');
+$BannerEdito = 			$this->themeSettingAssetUrl('banner_edito');
+$BannerItems = 			$this->themeSettingAssetUrl('banner_items');
+$BannerItemsets = 		$this->themeSettingAssetUrl('banner_itemsets');
+$BannerFacetBrowse = 	$this->themeSettingAssetUrl('banner_facetbrowse');
+$BannerSearch = 		$this->themeSettingAssetUrl('banner_search');
+$FooterSeparator = 		$this->themeSettingAssetUrl('footer_separator');
+$separator = 			$this->themeSettingAssetUrl('separator');
+
 $userBar = $this->userBar();
 
 $this->headMeta()->setCharset('utf-8');
@@ -41,12 +43,12 @@ $this->trigger('view.layout');
 			:root {
 				<?php echo ($BannerHome) ? '--img-banner-home: url('.$BannerHome.');' : '' ; ?>
 				<?php 
-				if($BannerHomeSmall) : 
-					echo '--img-banner-home-small: url('.$BannerHomeSmall.')';
+				if($BannerHomeSmall): 
+					echo '--img-banner-home-small: url('.$BannerHomeSmall.');';
 				elseif($BannerHome):
-					echo '--img-banner-home-small: url('.$BannerHome.')';
+					echo '--img-banner-home-small: url('.$BannerHome.');';
 				endif;
-				?>
+				?>				
 				<?php echo ($BannerEdito) ? '--img-banner-edito: url('.$BannerEdito.');' : '' ; ?>
 				<?php echo ($BannerItems) ? '--img-banner-items: url('.$BannerItems.');' : '' ; ?>
 				<?php echo ($BannerItemsets) ? '--img-banner-itemsets: url('.$BannerItemsets.');' : '' ; ?>

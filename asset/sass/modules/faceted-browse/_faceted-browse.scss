@@ -1,3 +1,7 @@
+.faceted-browse-page #content {
+	padding-left: $gutter;
+	padding-right: $gutter;
+}
 .faceted-browse-page #container {
 	flex-wrap: wrap;
 	align-items: flex-start;
@@ -10,20 +14,35 @@
 		margin-bottom: 0;
 
 		@include breakpoint(lg) {
-			grid-template-columns: 1fr auto;
+			grid-template-columns: auto 1fr;
+		}
+
+		& > * {
+			margin-bottom: -1px;
+		}
+		select {
+			background-color: $bg-list-hover;
+			//border-color: $border--1;
 		}
 	}
 
 	// FACETS
 	#section-sidebar {
-		width: $one-third;
+		width: 100%;
 		padding: $gutter;
-		background-color: $bg-light;
+		background-color: $bg-white;
 
+		@include breakpoint(xs) {
+			width: $one-third;
+		}
 		@include breakpoint(md) {
 			width: $one-fifth;
 		}
 	}
+	.facets-container {
+		margin-bottom: 0;
+	}
+
 	#helper-text-expand-collapse {
 		display: flex;
 		justify-content: space-between;
@@ -41,8 +60,27 @@
 	#helper-text {
 		padding: $gutter--xs;
 	}
+
 	fieldset {
-		margin: $gutter--sm 0 0;
+		margin: 0;
+	}
+	legend {
+		font-weight: $normal;
+	}
+	.facets {
+		margin-top: $gutter--md;
+	}
+
+	.facet {
+		margin-bottom: $gutter--md;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		legend {
+			font-size: 1em;
+		}
 	}
 	.select-list-item {
 		margin-bottom: $gutter;
@@ -52,14 +90,14 @@
 
 			&:hover,
 			&:focus {
-				cursor: pointer;				
+				cursor: pointer;
+				background-color: $bg-secondary;			
 
 				span {
 					box-shadow: inset 0 -2px 0 0 $bg-primary;
 				}
 			}
 			&:has(.value.selected) span {
-				box-shadow: inset 0 -1px 0 0 $bg-secondary;
 				font-weight: $semi-bold;
 			}
 
@@ -68,11 +106,55 @@
 			}
 		}
 	}
+	[type="radio"]:not(:checked), 
+	[type="radio"]:checked {
+		position: absolute;
+		left: 0;
+		opacity: 0.01;
+	}
+	label:has([type="radio"]:not(:checked)),
+	label:has([type="radio"]:checked) {
+		position: relative;
+		padding-left: $gutter--sm;
+		font-size: 1.05em;
+		line-height: 1.7;
+		cursor: pointer; 
+	}
+	label:has([type="radio"])::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: calc(50% - 2px);
+		display: block;
+		height: 5px;
+		width: 12px;
+		background-color: $bg-dark;
+	}
+
+	label:has([type="radio"]:checked) {
+		margin-left: -$gutter;
+		margin-right: -$gutter;
+		padding-left: calc( #{$gutter--sm} + #{$gutter} );
+		padding-right: $gutter;
+		border: 5px solid $border--1;
+
+		&::before {
+			top: calc(50% - 6px);
+			left: $gutter;
+			height: 12px;
+			width: 12px;
+			background-color: $bg-primary;
+		}
+	}
+		
 
 	// MAIN CONTENT
 	#section-content {
-		width: $two-thirds;
+		width: 100%;
 
+		@include breakpoint(xs) {
+			width: $two-thirds;
+		}
 		@include breakpoint(md) {
 			width: $four-fifths;
 		}
@@ -80,35 +162,45 @@
 			display: none; // voir utilisation de cet outil, à développer
 		}
 		table {
-			margin-bottom: $gutter--md;
+			margin-bottom: 0;
+			background-color: $bg-white;
+		}
+		thead {
+			border: 5px solid $border--1;
 		}
 		th {
 			padding: $gutter--xs $gutter;
-			background-color: $bg-light;
 			text-transform: uppercase;
 		}
 		tr {
 			position: relative;
 			@include transition;
 
-			&:nth-of-type(even) {
-				
-				background-color: $bg-light;
+			&:nth-of-type(even) {				
+				background-color: $bg-list;
 			}
 			&:hover,
 			&:focus-within {
-				box-shadow: inset 0 -2px 0 0 $bg-primary, inset 0 2px 0 0 $bg-primary, inset 2px 0 0 0 $bg-primary, inset -2px 0 0 0 $bg-primary;
+				background-color: $bg-list-hover;
+				box-shadow: inset 0 -5px 0 0 $border--1, inset 0 5px 0 0 $border--1, inset 5px 0 0 0 $border--1, inset -5px 0 0 0 $border--1;
+
+				td:first-child {
+					box-shadow: inset  -5px 0 0 0 $border--1;
+				}
 			}
 			td {
 				padding: $gutter;
 				vertical-align: top;
+				@include transition;
 			}
 		}
 
 		table .resource-link {
-			display: flex;
+			display: grid;
+			grid-template-columns: auto 1fr;
 			align-items: flex-start;
 			width: 	100%;
+			max-width: 100%;
 
 			&::after {
 				content: '';
@@ -125,6 +217,7 @@
 		}
 
 		.resource-name {
+			max-width: 100%;
 			font-weight: $semi-bold;
 			color: $color-global;
 		}

@@ -14,7 +14,7 @@ class DisplaySelectedValues extends AbstractHelper
 	 * @param bool   $annotations Display value annotations.
 	 * @return string
 	 */
-	public function __invoke($resource,$properties, $showValueAnnotations = false)
+	public function __invoke($resource,$properties, $showValueAnnotations = false, $showValueLabel = true)
 	{
 		if (!$resource || !$properties) {
 			return '';
@@ -50,7 +50,7 @@ class DisplaySelectedValues extends AbstractHelper
 
 						$propertyClass = str_replace(':', '-', $propertyValue);
 						$metadataContent .= '<div class="property resource__property '.$propertyClass.'">';
-						$metadataContent .= '<dt class="label">'.$propertyLabel.$translate(': ').'</dt>';
+						$metadataContent .= ($showValueLabel) ? '<dt class="label">'.$propertyLabel.$translate(': ').'</dt>' : '';
 
 						$propertyDataValues = array();
 						foreach ($propertyData['values'] as $value) {

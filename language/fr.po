@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Itinéraire Collection Bastaire\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-16 10:41+0200\n"
-"PO-Revision-Date: 2024-11-06 14:53+0100\n"
+"POT-Creation-Date: 2024-11-10 16:33+0100\n"
+"PO-Revision-Date: 2024-11-11 14:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -122,6 +122,10 @@ msgstr "Sous-collections"
 msgid "The items"
 msgstr "Les documents"
 
+#: ../view/omeka/site/item/browse.phtml:92
+msgid "Browse items"
+msgstr "Parcourir"
+
 #: ../view/omeka/site/item/browse.phtml:96
 msgid "In this collection"
 msgstr "Dans cette collection"
@@ -145,6 +149,10 @@ msgstr "Télécharger le fichier pdf"
 #: ../view/omeka/site/item/show.phtml:439
 msgid "Related documents"
 msgstr "Documents en relation"
+
+#: ../view/omeka/site/item/show.phtml:439
+msgid "Related resources"
+msgstr "Ressources liées"
 
 #: ../view/search/form/standard.phtml:36
 msgid "Simple search"

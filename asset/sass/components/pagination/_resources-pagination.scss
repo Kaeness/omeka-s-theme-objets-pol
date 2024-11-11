@@ -66,9 +66,10 @@
 	}
 }
 .pagination--bottom {
-	margin-top: $gutter;
+	margin-top: 0;
 	padding: $gutter--xs;
 	background-color: $bg-light;
+	border-top: 5px solid $border--1;
 	
 	.pagination {
 		@include margin-auto;

@@ -1,10 +1,19 @@
 octopusviewer-viewer {
 	margin: 0;
-	border: 1px solid $bg-primary;
+	border: 5px solid $border--1;
 	box-shadow: none;
 
 	@include breakpoint(xs) {
 		height: 80vmin;
-		max-height: 800px;
+		min-height: 450px;
+		max-height: 100vh;
+
+		@include breakpoint(sm) {
+			min-height: 550px;
+		}
+		@include breakpoint(md) {
+			min-height: 650px;
+			max-height: 800px;
+		}
 	}
 }

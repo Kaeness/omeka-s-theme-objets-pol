@@ -3,18 +3,19 @@
 .item.show .blocks,
 .items.search .blocks {
 
-	& > .wrap {
-		padding: $gutter--md $gutter;
+	& > .wrap:has(.main-region) {
+		padding: 0 $gutter $gutter--md $gutter;
 
 		@include breakpoint(xs) {
-			padding: $gutter--lg $gutter--sm;
+			padding: 0 $gutter--sm $gutter--lg $gutter--lg;
 		}
 		@include breakpoint(sm) {
-			padding: $gutter--xl;
+			padding-left: $gutter--xl;
+			padding-right: $gutter--xl;
 		}
-		@include breakpoint(lg) {
-			padding-left: $gutter--xxl;
-			padding-right: $gutter--xxl;
+		@include breakpoint(md) {
+			padding-left: 2 * $gutter--lg;
+			padding-right: 2 * $gutter--lg;
 		}
 	}		
 
@@ -23,6 +24,9 @@
 		.title {
 			margin-bottom: 0;
 		}
+	}
+	.page-chapo {
+		margin-bottom: $gutter--md;
 	}
 }
 .regions-container,
@@ -40,8 +44,8 @@
 
 	@include breakpoint(lg) {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-column-gap: $gutter--md;
+		grid-template-columns: 3fr 1fr;
+		grid-column-gap: $gutter--xl;
 		align-items: flex-start;
 	}
 	.region + .region {
@@ -52,12 +56,107 @@
 		}
 	}
 }
-.region {
+.item.show {
 
-	&--section.section--plus {
-		@extend .wrap;
-		@extend .wrap--xs;
+	.section--infos {
+		/*@extend .wrap;
+		@extend .wrap--xs;*/
+		padding: $gutter;
+		border: 5px solid $border--1;
+
+		@include breakpoint(sm) {
+			padding: $gutter--sm;
+		}
 	}
+	.section--edito,
+	.section--relation {
+
+		&__title {
+			position: relative;
+			@extend .wrap;
+			@extend .wrap--xs;
+			max-width: $width--xs;
+			margin-top: $gutter--lg;
+			margin-bottom: calc(-#{$gutter--xs} + 1px);
+			padding: $gutter $gutter 0;
+			line-height: 1;			
+			text-align: center;
+
+			&::before {
+				content: '';
+				position: absolute;
+				z-index: -1;
+				top: calc(-#{$gutter--xs} + 1px);
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: $bg-secondary;
+			}
+		}
+	}
+	.section--edito {
+
+		.properties-wrapper {
+			padding: $gutter;
+			background-color: $bg-white;
+
+			@include breakpoint(sm) {
+				padding: $gutter--sm;
+			}
+			@include breakpoint(md) {
+				padding-left: $gutter--md;
+				padding-right: $gutter--md;
+			}
+		}
+		.dcterms-description .label {
+			@include screen-reader-text;
+		}
+	}
+	.section--relation {
+
+		&__title {
+			margin-top: 0;
+			margin-bottom: $gutter--md;
+			padding-left: $gutter--xs;
+			padding-right: $gutter--xs;
+
+			&::before {
+				top: 0;
+				height: calc(100% - #{$gutter--xs} + 1px);
+				background-color: $bg-secondary;
+			}
+		}
+		.resource__value {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.resource-link {
+			display: grid;
+			grid-template-columns: 1fr;
+			justify-content: center;
+			background-color: $bg-white;
+			border: 5px solid $border--1;
+
+			&:not(:last-child) {
+				margin-bottom: $gutter--md;
+			}
+			&:hover,
+			&:focus {
+
+				.resource-name {
+					color: $color-accent;
+				}
+			}
+		}
+		.resource-name {
+			padding: $gutter--xs $gutter--xs $gutter $gutter--xs;
+			font-family: $font-headings;
+			font-weight: $bold;
+		}
+	}
+}
+.region {
 	&--section {
 
 		.octopusviewer-wrapper + .properties-wrapper {

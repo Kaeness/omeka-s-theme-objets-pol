@@ -40,3 +40,32 @@
 		}
 	}
 }
+
+.page-chapo {
+	position: relative;
+	padding: $gutter--md;
+	background-color: $bg-white;
+	text-align: center;
+	font-family: $font-family--2;
+	font-weight: $bold;
+	font-size: $font-size__h3;
+
+	&::before,
+	&::after {
+		content: '';
+		position: absolute;
+		display: block;
+		width: 40px;
+		height: 40px;
+		background: var(--icon-chapo-left) no-repeat center/contain;
+	}
+	&::before {
+		left: $gutter--xs;
+		top: $gutter--xs;
+	}
+	&::after {
+		right: $gutter--xs;
+		bottom: $gutter--xs;
+		background-image: var(--icon-chapo-right);
+	}
+}

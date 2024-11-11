@@ -36,9 +36,7 @@ endif;
 			$image = $thumbnail($itemSet, 'large');
 			$itemSetChildrens = $this->itemSetsTree()->getChildren($itemSet);
 		?>
-			<div class="page-title">
-				<?php echo $this->pageTitle($itemSet->displayTitle(null, $valueLang), 1); ?>
-			</div>
+			<div class="page-title"><?php echo $this->pageTitle($itemSet->displayTitle(null, $valueLang), 1); ?></div>
 			
 			<div class="itemset__content">
 				<?php echo ($image)? '<div class="itemset__thumbnail">'.$image.'</div>' : ''; ?> <!-- itemset_illus -->
@@ -101,7 +99,7 @@ endif;
 
 				<div class="browse-controls">
 					<div class="pagination__container"><?php echo $this->pagination(); ?></div>
-					<?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search button button--small']); ?>
+					<?php //echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search button button--small']); ?>
 					<?php echo $this->browse()->renderSortSelector('items'); ?>
 				</div>	
 

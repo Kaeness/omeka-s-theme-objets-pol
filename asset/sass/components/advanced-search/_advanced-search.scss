@@ -1,4 +1,76 @@
-// ADVANCED SEARCH
+/* ITEMS SEARCH PAGE
+--------------------------------------------- */
+.items.search {
+
+	#advanced-search {
+		padding: $gutter--sm $gutter;
+		background-color: $bg-white;
+		border: 5px solid $border--1;
+
+		@include breakpoint(xs) {
+			padding: $gutter--md $gutter--sm;
+		}
+		@include breakpoint(sm) {
+			padding: $gutter--lg;
+		}
+		@include breakpoint(md) {
+			padding: $gutter--xl;
+		}
+
+		label,
+		.label {
+			font-family: $font-headings;
+			font-size: $font-size__h3;
+			color: $color-headings;
+		}
+	}
+}
+/* FULLTEXT SEARCH - PAGE RESULTS
+--------------------------------------------- */
+.index.search .results {
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		padding-left: 0;
+		column-gap: $gutter--sm;
+		row-gap: $gutter--sm;
+		margin-bottom: $gutter--lg;
+
+		@include breakpoint(sm) {
+			column-gap: $gutter--md;
+			row-gap: $gutter--md;
+		}
+	}
+	ul li {
+		list-style-type: none;
+	}
+	.resource-link {
+		display: block;
+		background-color: $bg-white;
+
+		&:hover,
+		&:focus {
+			background-color: $bg-secondary;
+
+			img {
+				transform: scale(0.8);
+			}
+		}
+
+		.resource-name {
+			padding: 0 $gutter--xs;
+			font-family: $font-headings;
+			text-transform: uppercase;
+			color: $color-global;
+		}
+	}
+		
+}
+
+
+/* ADVANCED SEARCH PAGE
+--------------------------------------------- */
 .search-form-page {
 
 	#search-form,

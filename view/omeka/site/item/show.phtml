@@ -9,223 +9,120 @@ $valueLang = $filterLocale ? [$lang, ''] : null;
 
 
 // Regions
-$section1BlockContent = $this->resourcePageBlocks($item, 'section1');
-$section1HasBlocks = $section1BlockContent->hasBlocks();
-$section2BlockContent = $this->resourcePageBlocks($item, 'section2');
-$section2HasBlocks = $section2BlockContent->hasBlocks();
 $mainBlockContent = $this->resourcePageBlocks($item);
 $mainHasBlocks = $mainBlockContent->hasBlocks();
+
 $bottomBlockContent = $this->resourcePageBlocks($item, 'bottom');
 $bottomHasBlocks = $bottomBlockContent->hasBlocks();
 
-$itemdataSection1HTML = '';
-if ($itemdataSection1 = $this->themeSetting( 'itemdata_section1' )) {
-	$itemdataSection1HTML = $this->DisplaySelectedValues($item, $itemdataSection1,true);
+// Metadata contents
+$itemdataChapoHTML = '';
+if ($itemdataChapo = $this->themeSetting( 'itemdata_chapo' )) {
+	$itemdataChapoHTML = $this->DisplaySelectedValues($item, $itemdataChapo, true, false);
 }
 
-$itemdataSection2HTML = '';
-if ($itemdataSection2 = $this->themeSetting( 'itemdata_section2' )) {
-	$itemdataSection2HTML = $this->DisplaySelectedValues($item, $itemdataSection2,true);
+$itemdataInfosHTML = '';
+if ($itemdataInfos = $this->themeSetting( 'itemdata_infos' )) {
+	$itemdataInfosHTML = $this->DisplaySelectedValues($item, $itemdataInfos, true);
 }
 
-$itemdataPlusHTML = '';
-if ($itemdataPlus = $this->themeSetting( 'itemdata_plus' )) {
-	$itemdataPlusTitle = $this->themeSetting( 'itemdata_plus_title' );
-	$itemdataPlusHTML = $this->DisplaySelectedValues($item, $itemdataPlus,true);
+$itemdataEditoHTML = '';
+if ($itemdataEdito = $this->themeSetting( 'itemdata_edito' )) {
+	$itemdataEditoTitle = $this->themeSetting( 'itemdata_edito_title' );
+	$itemdataEditoHTML = $this->DisplaySelectedValues($item, $itemdataEdito, true);
+}
+
+$itemdataRelationHTML = '';
+if ($itemdataRelation = 'dcterms:relation') {
+	$itemdataRelationTitle = $translate( 'Related resources' );
+	$itemdataRelationHTML = $this->DisplaySelectedValues($item, $itemdataRelation, true, false);
 }
 
 
 ?>
 
 <?php
-// Breadcrumb with Item Sets Tree
-$itemSets = $item->itemSets(); 
-$itemSetIds = array();
-$counter = 0;
-if (count($itemSets) > 0):
-	foreach ($itemSets as $itemSet):
-		if ($counter++ == 0):
-			$itemSetIds[] = $itemSet->ID();
-			$breadcrumbParents = '';
-			$itemSetAncestors = array_reverse( $this->itemSetsTree()->getAncestors($itemSet) );
-			foreach ( $itemSetAncestors as $ancestorItemSet):
-				$breadcrumbParents .= '&gt; '.$ancestorItemSet->link($ancestorItemSet->displayTitle()).' ';
-			endforeach;
-			?>
-			<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> <?php echo $breadcrumbParents; ?> &gt; <a href="<?php echo $escape($itemSet->url()); ?>"><?php echo $itemSet->displayTitle(); ?></a> &gt; <span><?php echo $item->displayTitle(); ?></span></nav>
-			<?php
-		endif;
-	endforeach;
-endif;
+// Static breadcrumb with link to faceted browse page
+$breadcrumbParentLink = '/faceted-browse/1';
+$breadcrumbParentLinkTitle = 'Objets';
+$breadcrumbParents = '<a href="'.$this->url('site', [], [], true).$escape($breadcrumbParentLink).'">'.$escape($breadcrumbParentLinkTitle).'</a>';
 ?>
+<nav class="breadcrumbs wrap wrap--lg"><a href="<?php echo $this->url('site', [], [], true); ?>"><?php echo $translate('Home'); ?></a> &gt; <?php echo $breadcrumbParents; ?> &gt; <span><?php echo $item->displayTitle(); ?></span></nav>
+
 <div class="blocks">
+
 	<?php if ($this->getHelperPluginManager()->has('shareMeBaby')) : ?>
 		<div class="block-share-me-baby"><div class="wrap wrap--lg"><?php echo $this->shareMeBaby(); ?></div></div>
 	<?php endif; ?>
+
 	<div class="page-title"><?php echo $this->pageTitle($item->displayTitle(null, $valueLang), 1); ?></div>
-	<div class="wrap wrap--xl">
+
+	<?php if ($itemdataChapoHTML): ?>
+		<div class="wrap wrap--xs page-chapo">
+			<?php echo $itemdataChapoHTML; ?>
+		</div>
+	<?php endif; ?>
+
+	<div class="wrap wrap--lg">
 
 		<?php $this->trigger('view.show.before'); ?>
 
-		<?php if ($mainHasBlocks || $section1HasBlocks || $section2HasBlocks || $itemdataSection1HTML || $itemdataSection2HTML || $itemdataPlusHTML): ?>
-
-		    <?php
-		    $sectionsContainerClasses = '';
-		    if ( ($section1HasBlocks && $section2HasBlocks) || ($itemdataSection1HTML && $itemdataSection2HTML) ) {
-		        $sectionsContainerClasses = 'two-sections';
-		    } elseif ( $section1HasBlocks || $section2HasBlocks || $itemdataSection1HTML || $itemdataSection2HTML ) {
-		        $sectionsContainerClasses = 'one-section';
-		    }
-
-/*
-			$displayMode = ($this->themeSetting('items_display_mode')) ?: 2;
-		    if ( $displayMode == 1 ) {
-		        $sectionsContainerClasses .= ' one-column';
-		    }
-*/
-
-		    ?>
-			<div class="regions-container <?php echo $sectionsContainerClasses; ?>">
-				<?php if ( ($section1HasBlocks && $blockContent = $section1BlockContent->getBlocks()) || $itemdataSection1HTML): ?>
-		            <div class="region region--section section1">
-		                <div class="metadata">
-		                    <?php echo $blockContent; ?>
-							<?php
-							// Affichage métadonnées section 1
-							echo ($itemdataSection1HTML) ? '<div class="properties-wrapper">'.$itemdataSection1HTML.'</div>' : '';
-							$blockContent = '';
-							?>
-		                </div>
-		            </div>
-		        <?php endif; ?>
-
-		        <?php if ( ($section2HasBlocks && $blockContent = $section2BlockContent->getBlocks()) || $itemdataSection2HTML): ?>
-		            <div class="region region--section section2">
-		                <div class="metadata">
-		                    <?php echo $blockContent; ?>
-							<?php
-							// Affichage métadonnées section 2
-							echo ($itemdataSection2HTML) ? '<div class="properties-wrapper">'.$itemdataSection2HTML.'</div>' : '';
-							$blockContent = '';
-							?>
-		                </div>
-		            </div>
-		        <?php endif; ?>
+		<?php if ($mainHasBlocks && $blockContent = $mainBlockContent->getBlocks()): ?>
+			<div class="main-region">
+				<div class="metadata">
+					<?php echo $blockContent; ?>
+				</div>
 			</div>
+		<?php endif; ?>
 
-			<?php if ( $itemdataPlusHTML ): ?>
-				<div class="region region--section section--plus">
-					<?php
-					// Affichage titre section Plus
-					echo ($itemdataPlusTitle) ? '<p class="section--plus__title h2">'.$itemdataPlusTitle.'</p>' : '';
-					?>
-					<div class="metadata">
+		<div class="regions-container">
+
+			<div class="regions-container-col1">
+				<?php if ( $itemdataInfosHTML ): ?>
+					<div class="region region--section section--infos">
+						<div class="metadata">
+							<?php
+							// Affichage métadonnées section Infos
+							echo ($itemdataInfosHTML) ? '<div class="properties-wrapper">'.$itemdataInfosHTML.'</div>' : '';
+							?>
+						</div>
+					</div>
+				<?php endif; ?>
+
+				<?php if ($itemdataEditoHTML): ?>
+					<div class="region region--section section--edito">
 						<?php
-						// Affichage métadonnées section Plus
-						echo ($itemdataPlusHTML) ? '<div class="properties-wrapper">'.$itemdataPlusHTML.'</div>' : '';
+						// Affichage titre section Infos
+						echo ($itemdataEditoTitle) ? '<p class="section--edito__title h2">'.$itemdataEditoTitle.'</p>' : '';
+						?>
+						<?php
+						// Affichage métadonnées section Edito
+						echo ($itemdataEditoHTML) ? '<div class="properties-wrapper">'.$itemdataEditoHTML.'</div>' : '';
 						?>
 					</div>
-				</div>
-			<?php endif; ?>
+				<?php endif; ?>
 
-			<?php if ($mainHasBlocks && $blockContent = $mainBlockContent->getBlocks()): ?>
-				<div class="main-region">
-					<div class="wrap wrap--md">
+				<?php $this->trigger('view.show.after'); ?>
+			</div>
+
+			<div class="regions-container-col2">
+				<?php if ($itemdataRelationHTML): ?>
+					<div class="region region--section section--relation">
 						<div class="metadata">
-							<?php echo $blockContent; ?>
+							<?php
+							// Affichage titre section Relation
+							echo ($itemdataRelationTitle) ? '<p class="section--relation__title h2">'.$itemdataRelationTitle.'</p>' : '';
+							?>
+							<?php
+							// Affichage métadonnées section Relation
+							echo ($itemdataRelationHTML) ? '<div class="properties-wrapper">'.$itemdataRelationHTML.'</div>' : '';
+							?>
 						</div>
 					</div>
-				</div>
-			<?php endif; ?>
+				<?php endif; ?>
+			</div>
 
-		<?php endif; ?>
-		<?php 
-
-		$linkedItemsArray = $item->subjectValues();
-		if($linkedItemsArray): 
-
-			$itemdata_lists = $this->themeSetting( 'itemdata_lists' );
-			?>
-			<!-- Affichage des items liés -->
-			<div class="slider-items wrap wrap--lg" aria-labelledby="related-documents-heading">
-				<div class="slider-items__wrap wrap wrap--md">
-
-					<h2 class="slider-items__title" id="related-documents-heading"><?php echo $translate('Related resources'); ?></h2>
-
-					<div class="slider-items__list slider splide" id="related-slider">
-
-						<div class="splide__arrows">
-							<button class="splide__arrow splide__arrow--prev">
-								<i class="fa fa-caret-left"></i><span class="screen-reader-text"><?php echo $translate('Previous'); ?></span>
-							</button>
-							<button class="splide__arrow splide__arrow--next">
-								<i class="fa fa-caret-right"></i><span class="screen-reader-text"><?php echo $translate('Next'); ?></span>
-							</button>
-						</div>
-
-						<div class="splide__track">
-							<div class="splide__list">
-					
-								<?php foreach ($linkedItemsArray as $linkedItem): ?>
-									<?php foreach ($linkedItem as $valueItem):
-										$relatedResource = $valueItem['val']->resource();
-										?>
-										<div class="slider-item splide__slide">
-											
-											<div class="slider-item__contents">
-												<div class="slider-item__thumbnail">
-													<?php echo $this->thumbnail($relatedResource, 'large', ['class' => 'media-thumbnail', 'title' => $relatedResource->displayTitle()]); ?>
-												</div>
-												<div class="slider-item__texts">
-													<h3 class="slider-item__title">
-														<a href="<?php echo $relatedResource->url(); ?>" class="slider-item__link"><?php echo $relatedResource->displayTitle(); ?></a>
-													</h3>											
-													<div class="resource__metadatas">
-													<?php
-													$metadataContent = $this->DisplaySelectedValues($relatedResource, $itemdata_lists);
-													if ($metadataContent) {
-														echo $metadataContent;
-													}
-													?>
-													</div>
-												</div>
-											</div>
-										</div><!-- .splide__slide -->
-									<?php endforeach; ?>
-								<?php endforeach; ?>
-							</div><!-- .splide-list -->
-						</div><!-- .splide_track -->
-					</div><!-- .slider -->
-				</div>
-
-			</div><!-- .wrap -->
-			<script>
-			document.addEventListener( 'DOMContentLoaded', function () {
-				var splide = new Splide( '#related-slider', {
-					arrows: true,
-					keyboard: true,
-					pagination: true,
-					perPage: 3,
-					breakpoints: {
-						1079: { perPage: 2, },
-						599 : { perPage: 1, }
-					}
-				} );
-
-				// reference https://splidejs.com/guides/overflow/#loop-carousel
-				splide.on( 'overflow', function ( isOverflow ) {
-					splide.options = {
-						arrows    : isOverflow,
-						pagination: isOverflow,
-						drag      : isOverflow,
-					};
-				} );
-
-				splide.mount();
-			} );
-			</script>
-
-		<?php endif; ?>
+		</div>
 
 		<?php if ($bottomHasBlocks && $blockContent = $bottomBlockContent->getBlocks()): ?>
 			<div class="bottom-region">
@@ -237,9 +134,10 @@ endif;
 			</div>
 		<?php endif; ?>
 
-		<?php $this->trigger('view.show.after'); ?>
 	</div>
+
 </div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$('body .regions-container a').each(function() {
@@ -251,6 +149,7 @@ $(document).ready(function() {
 			$(this).append('<i class="fas fa-external-link-square-alt"></i>'); // Ajoute l'icône après le libellé du lien
 		}
 	});
+/*
 	$('body .regions-container a.resource-link').each(function() {
 		var href = $(this).attr('href');
 		if (this.hostname == window.location.hostname) {
@@ -258,7 +157,7 @@ $(document).ready(function() {
 			$(this).append('<i class="o-icon-uri"></i>'); // Ajoute l'icône après le libellé du lien
 		}
 	});
-
+*/
 
 });
 </script>

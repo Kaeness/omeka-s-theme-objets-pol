@@ -61,6 +61,21 @@
 			padding-right: $gutter--xxl;
 		}
 	}
+	.filter {
+		margin-bottom: $gutter--md;
+		padding: $gutter--xs $gutter;
+		background-color: $bg-search;
+
+		.filter-label {
+			font-family: $font-headings;
+			font-size: $font-size__h3;
+
+		}
+		.filter-value {
+			padding-left: $gutter;
+			font-weight: $bold;
+		}
+	}
 }
 
 .itemset {
