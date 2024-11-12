@@ -4,8 +4,19 @@
 	margin: 0;
 	padding: $gutter--md 0;
 }
+.page:not(.home) .blocks-inner {
 
-.blocks {
+	h2 {
+		max-width: $width--xxs;
+		padding: $gutter $gutter 0 $gutter;
+		@include margin-auto;
+		background-color: $bg-secondary;
+		background: linear-gradient(180deg, rgba($bg-secondary,1) calc(100% - 9px), rgba($bg-white,1) calc(100% - 9px));
+		text-align: center;
+	}
+}
+
+.page .blocks {
 
 	&-inner {
 		padding-left: $gutter;
@@ -41,13 +52,6 @@
 		position: relative;
 	}
 
-	h2 {
-		max-width: $width--xxs;
-		padding: $gutter $gutter 0 $gutter;
-		@include margin-auto;
-		background-color: $bg-secondary;
-		text-align: 0;
-	}
 	p {
 		margin-bottom: $gutter;
 

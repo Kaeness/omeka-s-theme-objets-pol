@@ -45,7 +45,7 @@ button[type="submit"]:hover {
 
 	&--small {
 		position: relative;
-		display: block;
+		display: inline-block;
 		margin-left: 80px;
 		padding: 0.5 * $gutter--xs;
 		background-color: $bg-body;
@@ -78,7 +78,7 @@ button[type="submit"]:hover {
 	}
 	&--xtrasmall {
 		position: relative;
-		display: block;
+		display: inline-block;
 		padding: 0.5 * $gutter--xs 0.5 * $gutter--xs 0.5 * $gutter--xs $gutter--md;
 		background-color: $bg-body;
 		border: 1px solid;

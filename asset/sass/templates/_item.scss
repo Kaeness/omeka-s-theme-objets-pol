@@ -59,13 +59,20 @@
 .item.show {
 
 	.section--infos {
-		/*@extend .wrap;
-		@extend .wrap--xs;*/
+		container-name: section-infos;
+		container-type: inline-size;
 		padding: $gutter;
 		border: 5px solid $border--1;
 
 		@include breakpoint(sm) {
 			padding: $gutter--sm;
+		}
+
+		.resource__property {
+			
+			@include breakpoint(sm) {
+				grid-template-columns: 2 * $gutter--lg 1fr;
+			}
 		}
 	}
 	.section--edito,
@@ -153,6 +160,26 @@
 			padding: $gutter--xs $gutter--xs $gutter $gutter--xs;
 			font-family: $font-headings;
 			font-weight: $bold;
+		}
+	}
+	.section--cite {
+		background-color: $bg-list;
+
+		.properties-wrapper {
+			padding: $gutter;
+
+			@include breakpoint(sm) {
+				padding: $gutter--sm;
+			}
+			@include breakpoint(md) {
+				padding-left: $gutter--md;
+				padding-right: $gutter--md;
+			}
+		}
+		.label {
+			font-family: $font-headings;
+			font-size: $font-size__h3;
+			color: $color-headings;
 		}
 	}
 }

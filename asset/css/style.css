@@ -4,7 +4,7 @@ Theme Name: Objets Pol
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 0.1.1
+Version: 0.1.2
 Omeka Version Constraint: ^4.1.1
 */
 /*--------------------------------------------------------------
@@ -895,7 +895,7 @@ button[type=submit]:hover {
 
 .button--small, .button--help {
   position: relative;
-  display: block;
+  display: inline-block;
   margin-left: 80px;
   padding: 4px;
   background-color: #F9F9F9;
@@ -924,7 +924,7 @@ button[type=submit]:hover {
 }
 .button--xtrasmall {
   position: relative;
-  display: block;
+  display: inline-block;
   padding: 4px 4px 4px 32px;
   background-color: #F9F9F9;
   border: 1px solid;
@@ -2911,7 +2911,6 @@ h6,
 .property dt {
   text-transform: uppercase;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 0.8889em;
   color: #6B4C57;
 }
 
@@ -3218,6 +3217,48 @@ h6,
   .page-layout-normal .block.block-layout-alignment-block-right + .block {
     margin-left: -14.5299145299%;
     width: calc(48.7179487179% + 14.5299145299%);
+  }
+}
+
+.assets.logos-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 16px;
+  -webkit-column-gap: 2.5641025641%;
+     -moz-column-gap: 2.5641025641%;
+          column-gap: 2.5641025641%;
+}
+@media (min-width: 768px) {
+  .assets.logos-list {
+    row-gap: 32px;
+  }
+}
+.assets.logos-list .asset {
+  width: 48.7179487179%;
+}
+@media (min-width: 600px) {
+  .assets.logos-list .asset {
+    width: 31.6239316239%;
+  }
+}
+.assets.logos-list .asset img {
+  max-height: 100px;
+  max-width: 100%;
+}
+@media (min-width: 600px) {
+  .assets.logos-list .asset img {
+    max-height: 200px;
   }
 }
 
@@ -5215,69 +5256,73 @@ hr,
   padding: 32px 0;
 }
 
-.blocks-inner {
+.page:not(.home) .blocks-inner h2 {
+  max-width: 450px;
+  padding: 16px 16px 0 16px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #F2AE8F;
+  background: linear-gradient(180deg, #f2ae8f calc(100% - 9px), white calc(100% - 9px));
+  text-align: center;
+}
+
+.page .blocks-inner {
   padding-left: 16px;
   padding-right: 16px;
   background-color: #FFF;
 }
 @media (min-width: 768px) {
-  .blocks-inner {
+  .page .blocks-inner {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media (min-width: 1080px) {
-  .blocks-inner {
+  .page .blocks-inner {
     padding-left: 48px;
     padding-right: 48px;
   }
 }
 @media (min-width: 1366px) {
-  .blocks-inner {
+  .page .blocks-inner {
     padding-left: 64px;
     padding-right: 64px;
   }
 }
-.blocks.wrap, .item.show .blocks.section--edito__title,
-.item.show .blocks.section--relation__title, .search-results .blocks.noresults, .blocks.site-page-pagination {
+.page .blocks.wrap, .page .item.show .blocks.section--edito__title, .item.show .page .blocks.section--edito__title,
+.page .item.show .blocks.section--relation__title,
+.item.show .page .blocks.section--relation__title, .page .search-results .blocks.noresults, .search-results .page .blocks.noresults, .page .blocks.site-page-pagination {
   margin-left: 16px;
   margin-right: 16px;
   padding-top: 16px;
   padding-bottom: 64px;
 }
 @media (min-width: 1600px) {
-  .blocks.wrap, .item.show .blocks.section--edito__title,
-  .item.show .blocks.section--relation__title, .search-results .blocks.noresults, .blocks.site-page-pagination {
+  .page .blocks.wrap, .page .item.show .blocks.section--edito__title, .item.show .page .blocks.section--edito__title,
+  .page .item.show .blocks.section--relation__title,
+  .item.show .page .blocks.section--relation__title, .page .search-results .blocks.noresults, .search-results .page .blocks.noresults, .page .blocks.site-page-pagination {
     margin-left: auto;
     margin-right: auto;
   }
 }
-.blocks .block:nth-child(2) {
+.page .blocks .block:nth-child(2) {
   position: relative;
 }
-.blocks h2 {
-  max-width: 450px;
-  padding: 16px 16px 0 16px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #F2AE8F;
-  text-align: 0;
-}
-.blocks p {
+.page .blocks p {
   margin-bottom: 16px;
 }
-.blocks p:last-child {
+.page .blocks p:last-child {
   margin-bottom: 0;
 }
-.blocks .page-chapo {
+.page .blocks .page-chapo {
   padding: 0 0 48px 0;
   border-bottom: 5px solid #F2AE8F;
 }
-.blocks .page-chapo::before {
+.page .blocks .page-chapo::before {
   left: -48px;
   top: -8px;
 }
-.blocks .page-chapo::after {
+.page .blocks .page-chapo::after {
   right: -48px;
   bottom: 32px;
 }
@@ -5401,14 +5446,20 @@ hr,
 }
 
 .item.show .section--infos {
-  /*@extend .wrap;
-  @extend .wrap--xs;*/
+  container-name: section-infos;
+  container-type: inline-size;
   padding: 16px;
   border: 5px solid #000;
 }
 @media (min-width: 768px) {
   .item.show .section--infos {
     padding: 24px;
+  }
+}
+@media (min-width: 768px) {
+  .item.show .section--infos .resource__property {
+    -ms-grid-columns: 96px 1fr;
+    grid-template-columns: 96px 1fr;
   }
 }
 .item.show .section--edito__title,
@@ -5521,6 +5572,28 @@ hr,
   padding: 8px 8px 16px 8px;
   font-family: "Bebas Neue", sans-serif;
   font-weight: 700;
+}
+.item.show .section--cite {
+  background-color: #EFEBED;
+}
+.item.show .section--cite .properties-wrapper {
+  padding: 16px;
+}
+@media (min-width: 768px) {
+  .item.show .section--cite .properties-wrapper {
+    padding: 24px;
+  }
+}
+@media (min-width: 1080px) {
+  .item.show .section--cite .properties-wrapper {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+.item.show .section--cite .label {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.33334em;
+  color: #000;
 }
 
 .region--section .octopusviewer-wrapper + .properties-wrapper {

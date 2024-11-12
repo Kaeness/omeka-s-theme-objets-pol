@@ -78,12 +78,13 @@ $activePage = $nav->findActive($container); */
 			endif;
 		?>
 
-	<?php endif; ?> 
-	<div class="blocks--container">
-		<div class="wrap wrap--sm">
-			<?php echo $this->content; ?>
+	<?php else: ?> 
+		<div class="blocks--container">
+			<div class="wrap wrap--sm">
+				<?php echo $this->content; ?>
+			</div>
 		</div>
-	</div>
+	<?php endif; ?> 
 </div>
 
 <?php $this->trigger('view.show.after'); ?>

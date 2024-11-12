@@ -18,7 +18,7 @@ $bottomHasBlocks = $bottomBlockContent->hasBlocks();
 // Metadata contents
 $itemdataChapoHTML = '';
 if ($itemdataChapo = $this->themeSetting( 'itemdata_chapo' )) {
-	$itemdataChapoHTML = $this->DisplaySelectedValues($item, $itemdataChapo, true, false);
+	$itemdataChapoHTML = $this->DisplaySelectedValues($item, $itemdataChapo, true, false, '');
 }
 
 $itemdataInfosHTML = '';
@@ -29,13 +29,18 @@ if ($itemdataInfos = $this->themeSetting( 'itemdata_infos' )) {
 $itemdataEditoHTML = '';
 if ($itemdataEdito = $this->themeSetting( 'itemdata_edito' )) {
 	$itemdataEditoTitle = $this->themeSetting( 'itemdata_edito_title' );
-	$itemdataEditoHTML = $this->DisplaySelectedValues($item, $itemdataEdito, true);
+	$itemdataEditoHTML = $this->DisplaySelectedValues($item, $itemdataEdito, true, true, '');
+}
+
+$itemdataCiteHTML = '';
+if ($itemdataCite = $this->themeSetting( 'itemdata_cite' )) {
+	$itemdataCiteHTML = $this->DisplaySelectedValues($item, $itemdataCite, true, true, '');
 }
 
 $itemdataRelationHTML = '';
 if ($itemdataRelation = 'dcterms:relation') {
 	$itemdataRelationTitle = $translate( 'Related resources' );
-	$itemdataRelationHTML = $this->DisplaySelectedValues($item, $itemdataRelation, true, false);
+	$itemdataRelationHTML = $this->DisplaySelectedValues($item, $itemdataRelation, true, false, '');
 }
 
 
@@ -102,7 +107,14 @@ $breadcrumbParents = '<a href="'.$this->url('site', [], [], true).$escape($bread
 					</div>
 				<?php endif; ?>
 
-				<?php $this->trigger('view.show.after'); ?>
+				<?php if ($itemdataCiteHTML): ?>
+					<div class="region region--section section--cite">
+						<?php
+						// Affichage métadonnées section Citation
+						echo ($itemdataCiteHTML) ? '<div class="properties-wrapper">'.$itemdataCiteHTML.'</div>' : '';
+						?>
+					</div>
+				<?php endif; ?>
 			</div>
 
 			<div class="regions-container-col2">
@@ -133,6 +145,8 @@ $breadcrumbParents = '<a href="'.$this->url('site', [], [], true).$escape($bread
 				</div>
 			</div>
 		<?php endif; ?>
+
+		<?php $this->trigger('view.show.after'); ?>
 
 	</div>
 

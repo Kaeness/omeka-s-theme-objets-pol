@@ -11,10 +11,12 @@ class DisplaySelectedValues extends AbstractHelper
 	 *
 	 * @param object $resource The resource to get values from.
 	 * @param string $properties The metadata to display.
-	 * @param bool   $annotations Display value annotations.
+	 * @param bool   $showValueAnnotations Display value annotations.
+	 * @param bool   $showValueLabel Display value labels.
+	 * @param string $valueSeparator The multi value separator.
 	 * @return string
 	 */
-	public function __invoke($resource,$properties, $showValueAnnotations = false, $showValueLabel = true)
+	public function __invoke($resource,$properties, $showValueAnnotations = false, $showValueLabel = true, $valueSeparator = ' | ')
 	{
 		if (!$resource || !$properties) {
 			return '';
@@ -69,7 +71,7 @@ class DisplaySelectedValues extends AbstractHelper
 						}
 
 						$metadataContent .= '<dd class="resource__value value">';
-						$metadataContent .= implode( ' | ', $propertyDataValues );
+						$metadataContent .= implode( $valueSeparator, $propertyDataValues );
 
 						if ($valueAnnotation && $showValueAnnotations):
 							$metadataContent .= '<a href="#" class="'.(('expanded' === $showValueAnnotations) ? 'collapse' : 'expand').'" aria-label="'.(('expanded' === $showValueAnnotations) ? $escape($translate('Collapse')) : $escape($translate('Expand'))).'">
