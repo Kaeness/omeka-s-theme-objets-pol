@@ -4,7 +4,7 @@ Theme Name: Objets Pol
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 0.1.3
+Version: 0.1.4
 Omeka Version Constraint: ^4.1.1
 */
 /*--------------------------------------------------------------
@@ -33,6 +33,14 @@ Omeka Version Constraint: ^4.1.1
   font-style: normal;
   font-weight: 400;
   src: url("../fonts/bricolage-grotesque-v7-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* bricolage-grotesque-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/bricolage-grotesque-v7-latin-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* bricolage-grotesque-600 - latin */
 @font-face {
@@ -3600,6 +3608,31 @@ h6,
   position: absolute;
 }
 
+.page-layout-normal .block-blockGroup:has(.video-responsive) {
+  padding-top: 0;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) > .block-html:has(h2, h3, .media-list .property dt) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) > .block-html:has(p) {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-weight: 500;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) > .block-html:has(p) + .block-oembed {
+  padding-top: 16px;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) .block-oembed {
+  padding-bottom: 0;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) .block-oembed + .block-html {
+  padding-top: 8px;
+}
+.page-layout-normal .block-blockGroup:has(.video-responsive) .block-oembed + .block-html p {
+  color: #6B4C57;
+}
+
 /* Page Date Time
 --------------------------------------------- */
 .block-pageDateTime .page-date-time {
@@ -7013,20 +7046,25 @@ hr,
   transition: all 0.5s ease-in-out;
 }
 .faceted-browse-page #container [type=radio]:not(:checked),
-.faceted-browse-page #container [type=radio]:checked {
+.faceted-browse-page #container [type=radio]:checked,
+.faceted-browse-page #container [type=checkbox]:not(:checked),
+.faceted-browse-page #container [type=checkbox]:checked {
   position: absolute;
   left: 0;
   opacity: 0.01;
 }
 .faceted-browse-page #container label:has([type=radio]:not(:checked)),
-.faceted-browse-page #container label:has([type=radio]:checked) {
+.faceted-browse-page #container label:has([type=radio]:checked),
+.faceted-browse-page #container label:has([type=checkbox]:not(:checked)),
+.faceted-browse-page #container label:has([type=checkbox]:checked) {
   position: relative;
   padding-left: 24px;
   font-size: 1.05em;
   line-height: 1.7;
   cursor: pointer;
 }
-.faceted-browse-page #container label:has([type=radio])::before {
+.faceted-browse-page #container label:has([type=radio])::before,
+.faceted-browse-page #container label:has([type=checkbox])::before {
   content: "";
   position: absolute;
   left: 0;
@@ -7036,14 +7074,16 @@ hr,
   width: 12px;
   background-color: #000;
 }
-.faceted-browse-page #container label:has([type=radio]:checked) {
+.faceted-browse-page #container label:has([type=radio]:checked),
+.faceted-browse-page #container label:has([type=checkbox]:checked) {
   margin-left: -16px;
   margin-right: -16px;
   padding-left: calc(24px + 16px);
   padding-right: 16px;
   border: 5px solid #000;
 }
-.faceted-browse-page #container label:has([type=radio]:checked)::before {
+.faceted-browse-page #container label:has([type=radio]:checked)::before,
+.faceted-browse-page #container label:has([type=checkbox]:checked)::before {
   top: calc(50% - 6px);
   left: 16px;
   height: 12px;
@@ -7126,6 +7166,26 @@ hr,
   max-width: 100%;
   font-weight: 600;
   color: #000;
+}
+.faceted-browse-page #container #section-content a {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  line-height: 1.25;
+  font-weight: 600;
+  color: #000;
+  border-bottom: 4px solid #E6E1E2;
+}
+.faceted-browse-page #container #section-content a:hover, .faceted-browse-page #container #section-content a:focus, .faceted-browse-page #container #section-content a:visited:hover, .faceted-browse-page #container #section-content a:visited:focus {
+  background-color: #B71E00;
+  border-color: #B71E00;
+  color: #FFF;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.faceted-browse-page #container #section-content a:visited {
+  color: #6B4C57;
+  border-bottom-color: #333333;
 }
 
 /* OCTOPUS VIEWER

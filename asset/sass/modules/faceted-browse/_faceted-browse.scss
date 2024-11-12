@@ -107,20 +107,25 @@
 		}
 	}
 	[type="radio"]:not(:checked), 
-	[type="radio"]:checked {
+	[type="radio"]:checked,
+	[type="checkbox"]:not(:checked), 
+	[type="checkbox"]:checked {
 		position: absolute;
 		left: 0;
 		opacity: 0.01;
 	}
 	label:has([type="radio"]:not(:checked)),
-	label:has([type="radio"]:checked) {
+	label:has([type="radio"]:checked),
+	label:has([type="checkbox"]:not(:checked)),
+	label:has([type="checkbox"]:checked) {
 		position: relative;
 		padding-left: $gutter--sm;
 		font-size: 1.05em;
 		line-height: 1.7;
 		cursor: pointer; 
 	}
-	label:has([type="radio"])::before {
+	label:has([type="radio"])::before,
+	label:has([type="checkbox"])::before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -131,7 +136,8 @@
 		background-color: $bg-dark;
 	}
 
-	label:has([type="radio"]:checked) {
+	label:has([type="radio"]:checked),
+	label:has([type="checkbox"]:checked) {
 		margin-left: -$gutter;
 		margin-right: -$gutter;
 		padding-left: calc( #{$gutter--sm} + #{$gutter} );
@@ -220,6 +226,30 @@
 			max-width: 100%;
 			font-weight: $semi-bold;
 			color: $color-global;
+		}
+		a {
+			position: relative;
+			z-index: 2;
+			display: inline-block;
+			line-height: $line-height--sm;
+			font-weight: $semi-bold;
+			color: $color-global;
+			border-bottom: 4px solid $border--link;
+
+			&:hover,
+			&:focus,
+			&:visited:hover,
+			&:visited:focus {
+				background-color: $bg-link;
+				border-color: $bg-link;
+				color: $color-light;
+				box-shadow: none;
+			}
+
+			&:visited {
+				color: $color-visited;
+				border-bottom-color: lighten($bg-dark, 20%);
+			}
 		}
 	}
 }
