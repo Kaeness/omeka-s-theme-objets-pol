@@ -102,7 +102,7 @@
 		width: $one-half;
 
 		@include breakpoint(xs) {
-			width: $one-third;
+			//width: $one-third; a remettre avec espace en largeur plus développé sur grands écrans
 		}
 		img {
 			max-height: 100px;

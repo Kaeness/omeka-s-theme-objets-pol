@@ -2,6 +2,7 @@
 .property dt {
 	text-transform: uppercase;
 	font-family: $font-headings;
+	line-height: $line-height--sm;
 	color: $color-label;
 }
 .value {
@@ -87,6 +88,10 @@
 
 		@include container (properties, sm) {
 			line-height: $line-height--sm;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: $gutter--xs;
 		}
 
 		.label {

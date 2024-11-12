@@ -8,25 +8,25 @@
 	&::before {
 		content: '';
 		position: absolute;
-		left: calc( -#{$gutter--md} + 2px );
-		top: 10px;
+		left: -$gutter--sm;
+		top: 12px;
 		display: block;
-		height: 10px;
-		width: 10px;
-		background-color: $bg-primary;
-		border-radius: 10px;
+		height: 5px;
+		width: 12px;
+		background-color: $border--1;
 	}
 	li::before {
-		top: $gutter;
-		height: 3px;
+		top: 10px;
+		height: 8px;
 		width: 8px;
-		border-radius: 0;
 	}
 	li li {
-		list-style-type: disc;
+		//list-style-type: disc;
 		
 		&::before {
-			content:none;
+			content: '—';
+			top: 0;
+			background: none;
 		}
 	}
 	li ul {

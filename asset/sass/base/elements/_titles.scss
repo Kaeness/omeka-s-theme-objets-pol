@@ -6,9 +6,13 @@ h5,.h5,
 h6,.h6 {
 	line-height: $line-height--headings;
 	font-family: $font-headings;
-	font-weight: $light;
+	font-weight: $normal;
 	color: $color-headings--2;
 	@include transition;
+
+	sup {
+		text-transform: none;
+	}
 }
 h1,
 .h1,
@@ -22,29 +26,27 @@ h2,
 .h2 {
 	text-transform: uppercase;
 	font-size: $font-size__h2;
-	font-weight: $normal;
 }
 h3,
 .h3 {
 	font-size: $font-size__h3;
-	font-weight: $semi-bold;
 }
 h4,
 .h4 {
-	font-weight: $semi-bold;
 	font-size: $font-size__h4;
 }
 h5,
 .h5 {
+	font-family: $font-family;
+	text-transform: none;
 	font-size: $font-size__h5;
-	font-weight: $semi-bold;
+	color: $color-accent;
 }
 h6,
 .h6 {
 	text-transform: uppercase;
+	font-family: $font-family;
 	font-size: $font-size__h6;
-	font-weight: $normal;
-	color: $color-accent;
 }
 
 .block {

@@ -1,6 +1,5 @@
 .toc-block {
 	padding: $gutter;
-	border: 1px solid $bg-primary;
 
 	@include breakpoint(xs) {
 		padding: $gutter--sm;
@@ -8,5 +7,28 @@
 	
 	ul {
 		border: 0;
+	}
+}
+
+// BLOC TABLE DES MATIERES
+.page-layout-normal .block-blockGroup:has(.block-tableOfContents) {
+	padding-top: 0;
+	border: 5px solid $border--1;
+
+	& > .block-html:has(h2,h3) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.block-tableOfContents {
+		padding-left: $gutter;
+		padding-right: $gutter;
+
+		@include breakpoint(xs) {
+			padding-left: $gutter--sm;
+			padding-right: $gutter--sm;
+		}
+	}
+	.toc-block {
+		padding: 0;
 	}
 }

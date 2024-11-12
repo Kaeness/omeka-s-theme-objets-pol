@@ -1,5 +1,10 @@
 /* Pages
 --------------------------------------------- */
+.page .breadcrumbs + .sub-menu {
+	display: none;
+}// A supprimer une fois le sous menu supprimé dans le site
+
+
 .page-layout-normal .block {
 	margin: 0;
 	padding: $gutter--md 0;
@@ -101,5 +106,23 @@
 		right: $gutter--xs;
 		bottom: $gutter--xs;
 		background-image: var(--icon-chapo-right);
+	}
+}
+.page .block-html .page-bibliography {	
+	padding: $gutter--md;
+
+	h2,
+	h3 {
+		padding-bottom: $gutter--xl;
+		background: var(--icon-bookmark) no-repeat center/ contain transparent !important;
+		font-size: $font-size__h2;
+	}
+	li {
+		margin-bottom: $gutter;
+		text-indent: -$gutter--sm;
+
+		&::before {
+			content: none;
+		}
 	}
 }

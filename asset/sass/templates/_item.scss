@@ -118,6 +118,17 @@
 		.dcterms-description .label {
 			@include screen-reader-text;
 		}
+		h2 {
+			margin-top: $gutter;
+			margin-bottom: $gutter;
+
+			&:fist-child {
+				margin-top: 0;
+			}
+		}
+		p:not(:last-child) {
+			margin-bottom: $gutter--xs;
+		}
 	}
 	.section--relation {
 
@@ -159,7 +170,6 @@
 		.resource-name {
 			padding: $gutter--xs $gutter--xs $gutter $gutter--xs;
 			font-family: $font-headings;
-			font-weight: $bold;
 		}
 	}
 	.section--cite {

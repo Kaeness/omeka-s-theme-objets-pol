@@ -4,7 +4,7 @@ Theme Name: Objets Pol
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 0.1.2
+Version: 0.1.3
 Omeka Version Constraint: ^4.1.1
 */
 /*--------------------------------------------------------------
@@ -800,7 +800,7 @@ blockquote {
   padding: 48px 0;
   font-weight: 600;
   font-style: italic;
-  font-size: 1.16667em;
+  font-size: 1em;
 }
 blockquote::before, blockquote::after {
   position: absolute;
@@ -1178,25 +1178,22 @@ a {
 .block ul li:not([role])::before {
   content: "";
   position: absolute;
-  left: calc(-32px + 2px);
-  top: 10px;
+  left: -24px;
+  top: 12px;
   display: block;
-  height: 10px;
-  width: 10px;
-  background-color: #B71E00;
-  border-radius: 10px;
+  height: 5px;
+  width: 12px;
+  background-color: #000;
 }
 .block ul li:not([role]) li::before {
-  top: 16px;
-  height: 3px;
+  top: 10px;
+  height: 8px;
   width: 8px;
-  border-radius: 0;
-}
-.block ul li:not([role]) li li {
-  list-style-type: disc;
 }
 .block ul li:not([role]) li li::before {
-  content: none;
+  content: "—";
+  top: 0;
+  background: none;
 }
 .block ul li:not([role]) li ul {
   -webkit-padding-start: 16px;
@@ -1211,7 +1208,7 @@ a {
 .block ul li:not([role]) dl dt {
   font-weight: 600;
   font-style: normal;
-  font-size: 1.16667em;
+  font-size: 1em;
 }
 .block ul li:not([role]) dl dd {
   margin-bottom: 16px;
@@ -1240,10 +1237,19 @@ h5, .h5,
 h6, .h6 {
   line-height: 1.25;
   font-family: "Bebas Neue", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   color: #000;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+}
+h1 sup, .item.show .slider-items__title sup, .partners__title sup, .h1 sup,
+h2 sup, .h2 sup,
+h3 sup,
+.media-list .property dt sup, .h3 sup,
+h4 sup, .h4 sup,
+h5 sup, .h5 sup,
+h6 sup, .h6 sup {
+  text-transform: none;
 }
 
 h1, .item.show .slider-items__title, .partners__title,
@@ -1259,33 +1265,31 @@ h2,
 .h2 {
   text-transform: uppercase;
   font-size: 1.77778em;
-  font-weight: 400;
 }
 
 h3, .media-list .property dt,
 .h3 {
   font-size: 1.33334em;
-  font-weight: 600;
 }
 
 h4,
 .h4 {
-  font-weight: 600;
-  font-size: 1.16667em;
+  font-size: 1em;
 }
 
 h5,
 .h5 {
-  font-size: 1.11112em;
-  font-weight: 600;
+  font-family: "Bricolage Grotesque", Helvetica, Arial, serif;
+  text-transform: none;
+  font-size: 1em;
+  color: #B71E00;
 }
 
 h6,
 .h6 {
   text-transform: uppercase;
-  font-size: 1em;
-  font-weight: 400;
-  color: #B71E00;
+  font-family: "Bricolage Grotesque", Helvetica, Arial, serif;
+  font-size: 0.88889em;
 }
 
 .block h2,
@@ -1381,7 +1385,7 @@ h6,
   margin: 0;
   padding: 4px 16px;
   line-height: 1;
-  font-size: 1.11112em;
+  font-size: 1em;
   color: #FFF;
 }
 .language-switcher li {
@@ -1908,7 +1912,7 @@ h6,
   position: relative;
   padding: 0 0 0 48px;
   border-bottom: 2px solid #000;
-  font-size: 1.16667em;
+  font-size: 1em;
 }
 .header__nav nav ul.navigation > li.parent {
   padding-right: 0;
@@ -2911,6 +2915,7 @@ h6,
 .property dt {
   text-transform: uppercase;
   font-family: "Bebas Neue", sans-serif;
+  line-height: 1.25;
   color: #6B4C57;
 }
 
@@ -2998,6 +3003,9 @@ h6,
     line-height: 1.25;
   }
 }
+.metadata .property:not(:last-child) {
+  margin-bottom: 8px;
+}
 .metadata .property .label {
   padding-top: 2px;
 }
@@ -3058,7 +3066,7 @@ h6,
 }
 .media-list a.resource-link {
   line-height: 1.25;
-  font-size: 1.11112em;
+  font-size: 1em;
   font-weight: 600;
 }
 .media-list a.resource-link:has(img) {
@@ -3246,11 +3254,6 @@ h6,
 }
 .assets.logos-list .asset {
   width: 48.7179487179%;
-}
-@media (min-width: 600px) {
-  .assets.logos-list .asset {
-    width: 31.6239316239%;
-  }
 }
 .assets.logos-list .asset img {
   max-height: 100px;
@@ -3495,7 +3498,6 @@ h6,
 --------------------------------------------- */
 .toc-block {
   padding: 16px;
-  border: 1px solid #B71E00;
 }
 @media (min-width: 600px) {
   .toc-block {
@@ -3504,6 +3506,28 @@ h6,
 }
 .toc-block ul {
   border: 0;
+}
+
+.page-layout-normal .block-blockGroup:has(.block-tableOfContents) {
+  padding-top: 0;
+  border: 5px solid #000;
+}
+.page-layout-normal .block-blockGroup:has(.block-tableOfContents) > .block-html:has(h2, h3, .media-list .property dt) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.page-layout-normal .block-blockGroup:has(.block-tableOfContents) .block-tableOfContents {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 600px) {
+  .page-layout-normal .block-blockGroup:has(.block-tableOfContents) .block-tableOfContents {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+.page-layout-normal .block-blockGroup:has(.block-tableOfContents) .toc-block {
+  padding: 0;
 }
 
 /* List of pages
@@ -3558,6 +3582,22 @@ h6,
   height: 30px;
   width: 22px;
   background: var(--icon-bookmark) no-repeat left center/contain;
+}
+
+/* Media embeds with oembed block
+--------------------------------------------- */
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 
 /* Page Date Time
@@ -5251,6 +5291,10 @@ hr,
 --------------------------------------------- */
 /* Pages
 --------------------------------------------- */
+.page .breadcrumbs + .sub-menu {
+  display: none;
+}
+
 .page-layout-normal .block {
   margin: 0;
   padding: 32px 0;
@@ -5352,6 +5396,25 @@ hr,
   right: 8px;
   bottom: 8px;
   background-image: var(--icon-chapo-right);
+}
+
+.page .block-html .page-bibliography {
+  padding: 32px;
+}
+.page .block-html .page-bibliography h2,
+.page .block-html .page-bibliography h3,
+.page .block-html .page-bibliography .media-list .property dt,
+.media-list .property .page .block-html .page-bibliography dt {
+  padding-bottom: 64px;
+  background: var(--icon-bookmark) no-repeat center/contain transparent !important;
+  font-size: 1.77778em;
+}
+.page .block-html .page-bibliography li {
+  margin-bottom: 16px;
+  text-indent: -24px;
+}
+.page .block-html .page-bibliography li::before {
+  content: none;
 }
 
 /* Item show
@@ -5530,6 +5593,16 @@ hr,
   font-size: 0.875rem;
   color: #000;
 }
+.item.show .section--edito h2 {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.item.show .section--edito h2:fist-child {
+  margin-top: 0;
+}
+.item.show .section--edito p:not(:last-child) {
+  margin-bottom: 8px;
+}
 .item.show .section--relation__title {
   margin-top: 0;
   margin-bottom: 32px;
@@ -5571,7 +5644,6 @@ hr,
 .item.show .section--relation .resource-name {
   padding: 8px 8px 16px 8px;
   font-family: "Bebas Neue", sans-serif;
-  font-weight: 700;
 }
 .item.show .section--cite {
   background-color: #EFEBED;
