@@ -21,7 +21,6 @@ a {
 
 		&:visited {
 			color: $color-visited;
-			border-bottom-color: lighten($bg-dark, 20%);
 		}
 	}
 	p > a,

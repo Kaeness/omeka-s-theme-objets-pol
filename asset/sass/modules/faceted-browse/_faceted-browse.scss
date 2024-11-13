@@ -18,11 +18,14 @@
 		}
 
 		& > * {
-			margin-bottom: -1px;
+			margin-bottom: 0;
 		}
-		select {
-			background-color: $bg-list-hover;
-			//border-color: $border--1;
+		select,
+		input {
+			//height: calc(100% - 1px);
+			background-color: $bg-list;
+			border-color: $bg-list;
+			border-bottom: 0;
 		}
 	}
 
@@ -120,8 +123,6 @@
 	label:has([type="checkbox"]:checked) {
 		position: relative;
 		padding-left: $gutter--sm;
-		font-size: 1.05em;
-		line-height: 1.7;
 		cursor: pointer; 
 	}
 	label:has([type="radio"])::before,
@@ -129,7 +130,7 @@
 		content: '';
 		position: absolute;
 		left: 0;
-		top: calc(50% - 2px);
+		top: 10px;
 		display: block;
 		height: 5px;
 		width: 12px;
@@ -145,7 +146,7 @@
 		border: 5px solid $border--1;
 
 		&::before {
-			top: calc(50% - 6px);
+			top: 5px;
 			left: $gutter;
 			height: 12px;
 			width: 12px;
@@ -164,92 +165,93 @@
 		@include breakpoint(md) {
 			width: $four-fifths;
 		}
-		.tablesaw-bar {
-			display: none; // voir utilisation de cet outil, à développer
+	}
+	.tablesaw-bar {
+		display: none; // voir utilisation de cet outil, à développer
+	}
+	table {
+		margin-bottom: 0;
+		background-color: $bg-white;
+	}
+	thead {
+		border: 5px solid $border--1;
+	}
+	th {
+		padding: $gutter--xs $gutter;
+		text-transform: uppercase;
+		line-height: $line-height--sm;
+	}
+	tr {
+		position: relative;
+		@include transition;
+
+		&:nth-of-type(even) {				
+			background-color: $bg-list;
 		}
-		table {
-			margin-bottom: 0;
-			background-color: $bg-white;
+		&:hover,
+		&:focus-within {
+			background-color: $bg-list-hover;
+			box-shadow: inset 0 -5px 0 0 $border--1, inset 0 5px 0 0 $border--1, inset 5px 0 0 0 $border--1, inset -5px 0 0 0 $border--1;
+
+			td:first-child {
+				box-shadow: inset  -5px 0 0 0 $border--1;
+			}
 		}
-		thead {
-			border: 5px solid $border--1;
-		}
-		th {
-			padding: $gutter--xs $gutter;
-			text-transform: uppercase;
-		}
-		tr {
-			position: relative;
+		td {
+			padding: $gutter;
+			vertical-align: top;
 			@include transition;
+		}
+	}
 
-			&:nth-of-type(even) {				
-				background-color: $bg-list;
-			}
-			&:hover,
-			&:focus-within {
-				background-color: $bg-list-hover;
-				box-shadow: inset 0 -5px 0 0 $border--1, inset 0 5px 0 0 $border--1, inset 5px 0 0 0 $border--1, inset -5px 0 0 0 $border--1;
+	table .resource-link {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		align-items: flex-start;
+		width: 	100%;
+		max-width: 100%;
 
-				td:first-child {
-					box-shadow: inset  -5px 0 0 0 $border--1;
-				}
-			}
-			td {
-				padding: $gutter;
-				vertical-align: top;
-				@include transition;
-			}
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
 		}
 
-		table .resource-link {
-			display: grid;
-			grid-template-columns: auto 1fr;
-			align-items: flex-start;
-			width: 	100%;
-			max-width: 100%;
+		img {
+			max-height: 150px;
+		}
+	}
 
-			&::after {
-				content: '';
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-			}
+	.resource-name {
+		max-width: 100%;
+		font-weight: $semi-bold;
+		color: $color-global;
+	}
+	tr a:not(.resource-link) {
+		position: relative;
+		z-index: 2;
+		display: inline-block;
+		line-height: $line-height--sm;
+		font-weight: $semi-bold;
+		color: $color-global;
+		border-bottom: 4px solid $border--link;
 
-			img {
-				max-height: 150px;
-			}
+		&:hover,
+		&:focus,
+		&:visited:hover,
+		&:visited:focus {
+			background-color: $bg-link;
+			border-color: $bg-link;
+			color: $color-light;
+			box-shadow: none;
 		}
 
-		.resource-name {
-			max-width: 100%;
-			font-weight: $semi-bold;
-			color: $color-global;
-		}
-		a {
-			position: relative;
-			z-index: 2;
-			display: inline-block;
-			line-height: $line-height--sm;
-			font-weight: $semi-bold;
-			color: $color-global;
-			border-bottom: 4px solid $border--link;
-
-			&:hover,
-			&:focus,
-			&:visited:hover,
-			&:visited:focus {
-				background-color: $bg-link;
-				border-color: $bg-link;
-				color: $color-light;
-				box-shadow: none;
-			}
-
-			&:visited {
-				color: $color-visited;
-				border-bottom-color: lighten($bg-dark, 20%);
-			}
+		&:visited {
+			color: $color-visited;
+			border-bottom-color: lighten($bg-dark, 20%);
 		}
 	}
 }
