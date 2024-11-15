@@ -16,10 +16,10 @@
 		width: calc( 100% + #{$one-third} );
 	}
 	@include breakpoint(lg) {
-		margin-left: calc(calc(100% - #{$width--sm}) / 2);
-		margin-right: calc(calc(100% - #{$width--sm}) / 2);
-		width: $width--sm;
-		max-width: $width--sm;
+		margin-left: calc(calc(100% - #{$width--md}) / 2);
+		margin-right: calc(calc(100% - #{$width--md}) / 2);
+		width: $width--md;
+		max-width: $width--md;
 	}
 }
 // align medium - 
@@ -126,8 +126,8 @@ $breakpoints: (
 @mixin clearfix {
 	clear: both;
 
-	&:before,
-	&:after {
+	&::before,
+	&::after {
 		display: block;
 		clear: both;
 		content: "";

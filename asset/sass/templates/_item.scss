@@ -115,19 +115,43 @@
 				padding-right: $gutter--md;
 			}
 		}
-		.dcterms-description .label {
-			@include screen-reader-text;
+		.dcterms-description {
+
+			& + .property {
+				margin-top: $gutter--md;
+			}
+			.label {
+				@include screen-reader-text;
+			}
 		}
+			
 		h2 {
 			margin-top: $gutter;
 			margin-bottom: $gutter;
 
-			&:fist-child {
+			&:first-child {
 				margin-top: 0;
 			}
 		}
 		p:not(:last-child) {
 			margin-bottom: $gutter--xs;
+		}
+
+		.resource__property:not(.dcterms-description, .dcterms-isReferencedBy) {
+			margin-bottom: $gutter;
+			
+			@include breakpoint(sm) {
+				grid-template-columns: auto 1fr;
+				grid-column-gap: $gutter--xs;
+
+				.label {
+					line-height: $line-height;
+				}
+			}
+			.value > * {
+				margin-bottom: $gutter--xs;
+				text-indent: -$gutter--sm;
+			}
 		}
 	}
 	.section--relation {

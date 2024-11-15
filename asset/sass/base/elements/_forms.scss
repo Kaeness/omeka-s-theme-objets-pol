@@ -43,7 +43,7 @@ select {
 		background-image: var(--icon-arrow-up-primary);
 	}
 }
-*::placeholder {
+::placeholder {
 	font-family: $font-headings--2;
 	font-size: $font-size--sm;
 	color: $color-global;

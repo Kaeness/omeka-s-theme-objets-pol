@@ -4,7 +4,7 @@ Theme Name: Objets Pol
 Author: Kaeness
 Author URI: https://kaeness.fr
 Description: Omeka S Theme for BibLibre
-Version: 0.1.5
+Version: 0.1.6
 Omeka Version Constraint: ^4.1.1
 */
 /*--------------------------------------------------------------
@@ -524,7 +524,7 @@ textarea:not([rows]) {
 --------------------------------------------- */
 #skipnav {
   position: fixed;
-  top: 1.625;
+  top: 1.625rem;
   left: 50%;
   border: 1px solid #000;
   -webkit-transform: translateX(-50%);
@@ -729,12 +729,29 @@ textarea:not([rows]) {
   max-width: 1600px;
 }
 
+@media (min-width: 1080px) {
+  .alignsmall {
+    margin-left: -14.5299145299%;
+    margin-right: -14.5299145299%;
+    max-width: calc(100% + 31.6239316239%);
+    width: calc(100% + 31.6239316239%);
+  }
+}
+@media (min-width: 1366px) {
+  .alignsmall {
+    margin-left: calc((100% - 1080px) / 2);
+    margin-right: calc((100% - 1080px) / 2);
+    width: 1080px;
+    max-width: 1080px;
+  }
+}
+
 /* Clearfix
 --------------------------------------------- */
-.clearfix::after {
+.clearfix {
   clear: both;
 }
-.clearfix::after:before, .clearfix::after:after {
+.clearfix::before, .clearfix::after {
   display: block;
   clear: both;
   content: "";
@@ -1078,31 +1095,31 @@ select:focus {
   background-image: var(--icon-arrow-up-primary);
 }
 
-*::-webkit-input-placeholder {
+::-webkit-input-placeholder {
   font-family: "BioRhyme Expanded", sans-serif;
   font-size: 0.88889em;
   color: #000;
 }
 
-*::-moz-placeholder {
+::-moz-placeholder {
   font-family: "BioRhyme Expanded", sans-serif;
   font-size: 0.88889em;
   color: #000;
 }
 
-*:-ms-input-placeholder {
+:-ms-input-placeholder {
   font-family: "BioRhyme Expanded", sans-serif;
   font-size: 0.88889em;
   color: #000;
 }
 
-*::-ms-input-placeholder {
+::-ms-input-placeholder {
   font-family: "BioRhyme Expanded", sans-serif;
   font-size: 0.88889em;
   color: #000;
 }
 
-*::placeholder {
+::placeholder {
   font-family: "BioRhyme Expanded", sans-serif;
   font-size: 0.88889em;
   color: #000;
@@ -2015,7 +2032,7 @@ h6,
 }
 .header__nav nav ul.open > li {
   height: auto;
-  padding-top: -1px;
+  margin-top: -1px;
   border-top: 1px solid #F9F9F9;
 }
 @media (min-width: 1080px) {
@@ -3559,8 +3576,8 @@ h6,
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: columns;
-          flex-direction: columns;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -4047,16 +4064,16 @@ hr,
 .resource-list.grid .resource__item {
   border-top: 0;
 }
-.resource-list.grid .resource__item:hover, .resource-list.grid .resource__item:focus:within {
+.resource-list.grid .resource__item:hover, .resource-list.grid .resource__item:focus-within {
   background-color: #F9F9F9;
 }
-.resource-list.grid .resource__item:hover .resource__thumbnail, .resource-list.grid .resource__item:focus:within .resource__thumbnail {
+.resource-list.grid .resource__item:hover .resource__thumbnail, .resource-list.grid .resource__item:focus-within .resource__thumbnail {
   background-color: #F2AE8F;
 }
-.resource-list.grid .resource__item:hover .resource__title, .resource-list.grid .resource__item:focus:within .resource__title {
+.resource-list.grid .resource__item:hover .resource__title, .resource-list.grid .resource__item:focus-within .resource__title {
   font-size: 1em;
 }
-.resource-list.grid .resource__item:hover a, .resource-list.grid .resource__item:focus:within a {
+.resource-list.grid .resource__item:hover a, .resource-list.grid .resource__item:focus-within a {
   color: #B71E00;
 }
 .resource-list.grid .resource__link,
@@ -4952,7 +4969,7 @@ hr,
   border: 3px solid transparent;
 }
 .partners img:hover, .partners img:focus {
-  bordercolor: #000;
+  border-color: #000;
 }
 .partners__button {
   text-align: center;
@@ -5488,6 +5505,10 @@ hr,
   content: none;
 }
 
+.page-stories p:has(a:only-child) {
+  text-align: center;
+}
+
 /* Item show
 --------------------------------------------- */
 /* Items
@@ -5632,6 +5653,9 @@ hr,
     padding-right: 32px;
   }
 }
+.item.show .section--edito .dcterms-description + .property {
+  margin-top: 32px;
+}
 .item.show .section--edito .dcterms-description .label {
   position: absolute !important;
   width: 1px;
@@ -5668,11 +5692,28 @@ hr,
   margin-top: 16px;
   margin-bottom: 16px;
 }
-.item.show .section--edito h2:fist-child {
+.item.show .section--edito h2:first-child {
   margin-top: 0;
 }
 .item.show .section--edito p:not(:last-child) {
   margin-bottom: 8px;
+}
+.item.show .section--edito .resource__property:not(.dcterms-description, .dcterms-isReferencedBy) {
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .item.show .section--edito .resource__property:not(.dcterms-description, .dcterms-isReferencedBy) {
+    -ms-grid-columns: auto 8px 1fr;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 8px;
+  }
+  .item.show .section--edito .resource__property:not(.dcterms-description, .dcterms-isReferencedBy) .label {
+    line-height: 1.625;
+  }
+}
+.item.show .section--edito .resource__property:not(.dcterms-description, .dcterms-isReferencedBy) .value > * {
+  margin-bottom: 8px;
+  text-indent: -24px;
 }
 .item.show .section--relation__title {
   margin-top: 0;
@@ -6847,10 +6888,10 @@ hr,
 }
 @media (min-width: 1366px) {
   .block-item-sets-tree {
-    margin-left: calc((100% - 768px) / 2);
-    margin-right: calc((100% - 768px) / 2);
-    width: 768px;
-    max-width: 768px;
+    margin-left: calc((100% - 1080px) / 2);
+    margin-right: calc((100% - 1080px) / 2);
+    width: 1080px;
+    max-width: 1080px;
   }
 }
 .block-item-sets-tree h2 {

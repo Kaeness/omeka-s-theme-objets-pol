@@ -238,7 +238,7 @@
 	// Opens second level of menu - show on click (responsive)
 	&.open > li {
 		height: auto;
-		padding-top: -1px;
+		margin-top: -1px;
 		border-top: 1px solid $bg-body;
 
 		@include breakpoint(md) {

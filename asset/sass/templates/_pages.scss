@@ -126,3 +126,8 @@
 		}
 	}
 }
+.page-stories {
+	p:has(a:only-child) {
+		text-align: center;
+	}
+}

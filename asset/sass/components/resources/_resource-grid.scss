@@ -30,7 +30,7 @@
 		border-top: 0;
 
 		&:hover,
-		&:focus:within {
+		&:focus-within {
 			background-color: $bg-light;
 
 			.resource__thumbnail {
